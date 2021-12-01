@@ -23,7 +23,7 @@ void Trou::addBlue(char nb_blue){
 
 std::string Trou::toString() {
     std::ostringstream strout;
-    strout<< "Trou( R : " << graine_rouge << " |  B : " << graine_bleu << " )" << std::endl;
+    strout<< "(\033[1;31mR : " << +this->graine_rouge << "\033[0m|\033[1;34mB : " << +this->graine_bleu << "\033[0m)";
     return strout.str();
 }
 
@@ -92,7 +92,7 @@ int main(){
         for(int i = 0; i < 16; i++){
             std::cout << cases[i]->toString() << ", ";
         }
-        std::cout << " ]" <<std::endl;
+        std::cout << "]" <<std::endl;
       /*   //LE JOUEUR 1 EST FINITO
         if (cases[0] == 0 && cases[1] == 0 && cases[2] == 0 && cases[3] == 0 && cases[4] == 0 && cases[5] == 0){
             std::cout << "le joueur 1 est affamé, le joueur 2 a gagné" << std::endl;
