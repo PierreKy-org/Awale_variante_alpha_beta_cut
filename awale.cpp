@@ -1,33 +1,5 @@
-#include <iostream>
-#include <cstdlib>  
-#include <ctime>
 #include <sstream>
-
-class Trou{
-	public :
-		void addRed(char);
-        void addBlue(char);
-		char graine_rouge = 2;
-        char graine_bleu = 2;
-        std::string toString();
-};
-
-void Trou::addRed(char nb_red){
-	this->graine_rouge += nb_red;
-
-}
-
-void Trou::addBlue(char nb_blue){
-	this->graine_bleu += nb_blue;
-}
-
-std::string Trou::toString() {
-    std::ostringstream strout;
-    strout<< "(\033[1;31mR : " << +this->graine_rouge << "\033[0m|\033[1;34mB : " << +this->graine_bleu << "\033[0m)";
-    return strout.str();
-}
-
-
+#include "Trou.cpp"
 
 class Graine{
     public :
@@ -36,12 +8,12 @@ class Graine{
 };
 
 
-int deplacementEtGain(int* cases, int nb){
-    int temp = cases[nb];
-    cases[nb] = 0; // On remplace la case par 0
+int deplacementEtGain(Trou* cases, int nb){
+    Trou temp = cases[nb];
+   // cases[nb] = 0; // On remplace la case par 0
     int acc = 1;
     int gain = 0;
-    while(acc <= temp){ //On met une graine dans chaque prochain trou 
+    /*while(acc <= temp){ //On met une graine dans chaque prochain trou 
         cases[(nb+acc)%12] += 1;
         if(acc == temp){  //On vérifie si le joueur gagne des graines ou pas 
             bool encore = true;
@@ -59,13 +31,13 @@ int deplacementEtGain(int* cases, int nb){
             }
         }
         acc++;
-    }
+    }*/
     return gain; //On renvoi le nombre de graine gagné
 }
 
 int main(){
     //INITIALISATION
-    Trou* cases[16] {new Trou(),new Trou(),new Trou(),new Trou(),new Trou(),new Trou(),new Trou(),new Trou(),new Trou(),new Trou(),new Trou(),new Trou(),new Trou(),new Trou(),new Trou(),new Trou()};
+    Trou *cases = new Trou[16];
     char gainJ1 = 0;
     char gainJ2 = 0;
     bool tour = true;
@@ -76,23 +48,31 @@ int main(){
     //BOUCLE DE JEU 
     while(ingame){
         //Le joueur choisie une case
-       /*  int v1 = rand() % 6;         
+        int v1 = rand() % 6;         
         int v2 = rand() % 6 + 6;     
         //UN tour sur 2 le joueur 1 joue    
         if(tour){
-            gainJ1 += deplacementEtGain(cases,v1); // On ajoute le nomre de graine gagné au score du joueur 
+            gainJ1 += deplacementEtGain(cases,v1); // On ajoute le nombre de graine gagné au score du joueur 
             tour = false;
         }
         else{
-            gainJ2 += deplacementEtGain(cases, v2); //On ajoute le nomre de graine gagné au score du joueur
+            gainJ2 += deplacementEtGain(cases, v2); //On ajoute le nombre de graine gagné au score du joueur
             tour = true;
-        } */
+        } 
+
+
+
         //AFFICHAGE DU BOARD
         std::cout << "[ ";
         for(int i = 0; i < 16; i++){
-            std::cout << cases[i]->toString() << ", ";
+            std::cout << cases[i].toString() << ", ";
         }
         std::cout << "]" <<std::endl;
+
+
+
+
+
       /*   //LE JOUEUR 1 EST FINITO
         if (cases[0] == 0 && cases[1] == 0 && cases[2] == 0 && cases[3] == 0 && cases[4] == 0 && cases[5] == 0){
             std::cout << "le joueur 1 est affamé, le joueur 2 a gagné" << std::endl;
