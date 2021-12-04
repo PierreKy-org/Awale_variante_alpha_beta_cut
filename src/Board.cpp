@@ -46,3 +46,4 @@ int deplacementEtGain(Trou* cases, int nb){
     int gain = 0;
     return gain; //On renvoi le nombre de graine gagné
 }
+

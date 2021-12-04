@@ -54,28 +54,33 @@ The winner is the player who has more seeds than his opponent.
 
 examples:
  
-Case 1:
+===================Case 1:
  
+======Board
 1 (2R)
 16 (2R)  15 (2B) 14 (2B2R) 13 (2R2B)
- 
+
+======Moves
 Player even plays 14 B
 The sowing leads to
 1(2R1B)
 16 (2R) 15 (3B) 14 (2R) 13 (2R2B)
- 
 So, seeds of 1, 16, 15 , 14 are taken
 The result is;
 1()
-16() 15() 14 () 13 (2R2B) . The even player took  10 seeds
+16() 15() 14 () 13 (2R2B) . 
+The even player took  10 seeds
  
-Case 2:
+
+ 
+===================Case 2.1:
+
+======Board
 1 (1R) 2 (2R) 3(1B) 4(2B) 5(1R)
 16 (3B1R) 15 (2R) 14 (4B)
- 
-Case 2.1:
+
+======Moves
 Player even plays 16B
- 
 The sowing leads to
 1 (1B1R) 2 (2R) 3(2B) 4(2B) 5(1B1R)
 16 (1R) 15 (2R) 14 (4B)
@@ -84,9 +89,14 @@ The results is
 1 () 2 () 3 () 4 () 5 ()
 16 (1R) 15 (2R) 14 (4B)
  
-Case 2.2:
+===================Case 2.2:
+
+======Board
+1 (1R) 2 (2R) 3(1B) 4(2B) 5(1R)
+16 (3B1R) 15 (2R) 14 (4B)
 Player even plays 16R
- 
+
+======Move
 The sowing leads to
 1 (2R) 2 (2R) 3(1B) 4(2B) 5(1R)
 16 (3B) 15 (2R) 14 (4B)
