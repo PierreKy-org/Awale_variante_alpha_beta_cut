@@ -1,5 +1,7 @@
 run :	build
-	@./main
-	
+	@./builds/main
+
 build : 
-	@g++ awale.cpp -o main
+	@g++ src/Awale.cpp -o builds/main
+
+#TODO : Definir un build optimisé
