@@ -5,18 +5,16 @@ class Move {
     public:           
         //Variables
         int starting_hole;
-        int nbRed;
-        int nbBlue;
+        char color;
 
         //Functions
-        Move(int starting_hole, int nbRed, int nbBlue);
+        Move(int starting_hole, char color);
 };
 
 /**
  * Constructeur
  */ 
-Move::Move(int start, int red, int blue) {
+Move::Move(int start, char col) {
     starting_hole = start;
-    nbRed = red;
-    nbBlue = blue;
+    color = col;
 }
