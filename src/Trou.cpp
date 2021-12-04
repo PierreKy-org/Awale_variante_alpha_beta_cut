@@ -4,20 +4,22 @@
 
 class Trou{
 	public :
-		void addRed(char);
-        void addBlue(char);
+		void addRed();
+        void addBlue();
 		char graine_rouge = 2;
         char graine_bleu = 2;
         std::string toString();
 };
 
-void Trou::addRed(char nb_red){
-	this->graine_rouge += nb_red;
-
+/**
+ * On ne peut déposer qu'une graine par trou (d'où le += 1)
+ */ 
+void Trou::addRed(){
+	this->graine_rouge += 1;
 }
 
-void Trou::addBlue(char nb_blue){
-	this->graine_bleu += nb_blue;
+void Trou::addBlue(){
+	this->graine_bleu += 1;
 }
 
 std::string Trou::toString() {
