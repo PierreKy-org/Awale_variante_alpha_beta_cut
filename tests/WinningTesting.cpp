@@ -165,6 +165,52 @@ int testing (char* functionName, bool (*function)()){
     }
 }
 
+/**
+ * Test de l'annonce du gagnant (j1)
+ */ 
+
+bool testWinner01(){
+    Board board;
+
+    //On modifie le gain
+    //Les gains sont des chars (il faut pas mettre plus de 256 dedans du coup)
+    board.gainJ1 = 33;
+    board.gainJ2 = 31;
+
+    return (winner(board) == 0);
+}
+/**
+ * Test de l'annonce du gagnant (j2)
+ */ 
+
+bool testWinner02(){
+    Board board;
+
+    //On modifie le gain
+    //Les gains sont des chars (il faut pas mettre plus de 256 dedans du coup)
+    board.gainJ2 = 33;
+    board.gainJ1 = 31;
+
+    return (winner(board) == 1);
+}
+/**
+ * Test de l'annonce de nulle
+ */ 
+bool testWinner03(){
+    Board board;
+
+    //On modifie le gain
+    //Les gains sont des chars (il faut pas mettre plus de 256 dedans du coup)
+    board.gainJ2 = 32;
+    board.gainJ1 = 32;
+
+    return (winner(board) == 2);
+}
+
+
+//IL MANQUE DES TESTS qui nécessite l'implémentation de la capture
+// : Déterminer le gagnant APRES un coup décisif niveau capture
+
 int main(){
     int successes = 0;
     successes += testing("testEndgame01", &testEndGame01);
@@ -175,5 +221,10 @@ int main(){
     successes += testing("testEndgame06", &testEndGame06);
     successes += testing("testEndgame07", &testEndGame07);
 
-    printf("\n\n=====> [%d/7] Test Passed\n", successes);
+    successes += testing("testWinner01", &testWinner01);
+    successes += testing("testWinner02", &testWinner02);
+    successes += testing("testWinner03", &testWinner03);
+
+    printf("\n\n=====> [%d/10] Test Passed\n", successes);
+    printf("PENSER A RAJOUTER LES TESTS MANQUANTS APRES L'IMPLEMENTATION DE LA CAPTURE\n\n");
 }
