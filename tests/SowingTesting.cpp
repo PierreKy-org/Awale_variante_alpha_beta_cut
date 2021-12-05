@@ -1,5 +1,5 @@
 #include <sstream>
-#include "SowingRules.cpp"
+#include "../src/SowingRules.cpp"
 
 
 //Un seul digit avant le B
@@ -227,30 +227,35 @@ bool testAfterMakingMove05(){
 
 }
 
-void testing (char* functionName, bool (*function)()){
+int testing (char* functionName, bool (*function)()){
     printf("\nTesting %s : \n", functionName);
     if (function()){
         printf("Test Passed\n");
+        return 1;
     } else {
         printf("Test Failed     !!!!!!!!!!!!!!!!!!!!!!\n");
+        return 0;
     }
 }
 
 int main(){
-    testing("testMoveParser01", &testMoveParser01);
-    testing("testMoveParser02", &testMoveParser02);
-    testing("testMoveParser03", &testMoveParser03);
+    int successes = 0;
+    successes += testing("testMoveParser01", &testMoveParser01);
+    successes += testing("testMoveParser02", &testMoveParser02);
+    successes += testing("testMoveParser03", &testMoveParser03);
 
-    testing("testLegal01", &testLegal01);
-    testing("testLegal02", &testLegal02);
+    successes += testing("testLegal01", &testLegal01);
+    successes += testing("testLegal02", &testLegal02);
 
-    testing("testIllegal01", &testIllegal01);
-    testing("testIllegal02", &testIllegal02);
-    testing("testIllegal03", &testIllegal03);
+    successes += testing("testIllegal01", &testIllegal01);
+    successes += testing("testIllegal02", &testIllegal02);
+    successes += testing("testIllegal03", &testIllegal03);
     
-    testing("testAfterAMove01", &testAfterMakingMove01);
-    testing("testAfterAMove02", &testAfterMakingMove02);
-    testing("testAfterAMove03", &testAfterMakingMove03);
-    testing("testAfterAMove04", &testAfterMakingMove04);
-    testing("testAfterAMove05", &testAfterMakingMove05);
+    successes += testing("testAfterAMove01", &testAfterMakingMove01);
+    successes += testing("testAfterAMove02", &testAfterMakingMove02);
+    successes += testing("testAfterAMove03", &testAfterMakingMove03);
+    successes += testing("testAfterAMove04", &testAfterMakingMove04);
+    successes += testing("testAfterAMove05", &testAfterMakingMove05);
+
+    printf("\n\n=====> [%d/13] Test Passed\n", successes);
 }

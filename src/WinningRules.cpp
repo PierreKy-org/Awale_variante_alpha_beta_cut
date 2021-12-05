@@ -5,11 +5,16 @@
 #include "SowingRules.cpp"
 using namespace std;
 
+
+
+// FAIRE ATTENTION A LA VERIF de quand il reste moins de 8 graines :
+//(on ne prend pas en compte le tableau juste les gains des joueurs)
 /**
  * Détermine si la partie peut continuer
  * Ou si on a atteint un cas d'arrêt
  */ 
 bool is_it_the_end_of_the_game(Board board){
+
 
     //Un joueur a la majorité des graines
     if (board.gainJ1 > 32 || board.gainJ2 > 32){

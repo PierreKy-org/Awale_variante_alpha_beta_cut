@@ -8,8 +8,8 @@ class Trou{
         Trou();
 
         //variables
-		char graine_rouge;
-        char graine_bleu;
+		short graine_rouge;
+        short graine_bleu;
 
         //fonctions
 		void addRed();
