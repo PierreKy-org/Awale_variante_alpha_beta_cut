@@ -5,15 +5,18 @@
 class Board {
 
     public:           
-        //Variables
+        //constructeurs
+        Board();
+        Board (Trou* cases_existantes);
+
+        //variables
         Trou *cases;
         char gainJ1;
         char gainJ2;
         bool tour;
         bool ingame;
 
-        //Functions
-        Board();
+        //fonctions
         void printer();
 };
 
@@ -27,6 +30,15 @@ Board::Board() {
     tour = true;
     ingame = true;
 }
+
+Board::Board(Trou* cases_existantes){
+    cases = cases_existantes;
+    gainJ1 = 0;
+    gainJ2 = 0;
+    tour = true;
+    ingame = true;
+}
+
 
 /**
  * Affiche le board

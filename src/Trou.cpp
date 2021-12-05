@@ -4,12 +4,31 @@
 
 class Trou{
 	public :
+        //constructeurs
+        Trou();
+        Trou(int, int);
+
+        //variables
+		char graine_rouge;
+        char graine_bleu;
+
+        //fonctions
 		void addRed();
         void addBlue();
-		char graine_rouge = 2;
-        char graine_bleu = 2;
+        void empty(char);
         std::string toString();
 };
+
+Trou::Trou(){
+    char graine_rouge = 2;
+    char graine_bleu = 2;
+}
+
+Trou::Trou(int nbRouge, int nbBleu){
+    char graine_rouge = nbRouge;
+    char graine_bleu = nbBleu;
+}
+
 
 /**
  * On ne peut déposer qu'une graine par trou (d'où le += 1)
@@ -21,6 +40,15 @@ void Trou::addRed(){
 void Trou::addBlue(){
 	this->graine_bleu += 1;
 }
+
+void Trou::empty(char color){
+    if (color == 'B'){
+        this->graine_bleu = 0;
+    }else {
+        this->graine_rouge = 0;
+    }
+}
+
 
 std::string Trou::toString() {
     std::ostringstream strout;

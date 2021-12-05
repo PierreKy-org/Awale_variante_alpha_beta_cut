@@ -6,10 +6,10 @@
 #include "Board.cpp"
 using namespace std;
 
+
 /*Renvois un objet Move, si le move commence à -1 il est cassé"*/
 //Default input permet de tester et aussi de jouer sans attendre les inputs du joueur
 Move parse_a_move(string defaultInput=""){
-    //TODO ajouter le numéro du tour ou le joueur qui joue le coup
     string input;
 
     if(defaultInput == ""){
@@ -42,7 +42,7 @@ Move parse_a_move(string defaultInput=""){
  * Un move qui demande des graines d'une couleur impossible
  * 
  */ 
-bool is_a_move_legit(Board board, Move move, int joueur){
+bool is_a_move_legal(Board board, Move move, int joueur){
     int startingHole = move.starting_hole;
     //Vérifie que la case existe
     if ((startingHole < 0)
@@ -111,6 +111,7 @@ void sowing_blue(Board board, Move move, int joueur){
         compteur++;
     }
 }
+
 void execute_a_move(Board board, Move move, int joueur){
     if (move.color == 'B'){
         sowing_blue(board, move, joueur);
