@@ -16,6 +16,7 @@ class Board {
         bool ingame;
 
         //fonctions
+        int is_a_player_starving();
         void printer();
 };
 
@@ -41,11 +42,21 @@ void Board::printer(){
     std::cout << "]" <<std::endl;
 }
 
+int Board::is_a_player_starving(){
+    int j1_starving;
+    int j2_starving;
 
-int deplacementEtGain(Trou* cases, int nb){
-    Trou temp = cases[nb];
-    int acc = 1;
-    int gain = 0;
-    return gain; //On renvoi le nombre de graine gagné
+    for(int i=0; i<16; i++){
+        if(i%2 == 0){
+            j1_starving += cases[i].graine_bleu + cases[i].graine_rouge;
+        }else{
+            j2_starving += cases[i].graine_bleu + cases[i].graine_rouge;
+        }
+    }
+    return (j1_starving == 0 || j2_starving == 0);
 }
+
+
+
+
 

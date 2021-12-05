@@ -130,13 +130,3 @@ void execute_a_move(Board board, Move move, int joueur){
         sowing_red(board, move, joueur);
     }
 }
-
-
-
-
-
-
-
-
-
-
