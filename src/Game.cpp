@@ -5,7 +5,6 @@
 
 int main(){
     Board board;
-    bool ingame = board.ingame;
     board.printer();
 }
 

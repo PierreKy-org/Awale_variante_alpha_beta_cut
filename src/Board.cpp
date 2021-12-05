@@ -7,7 +7,6 @@ class Board {
     public:           
         //constructeurs
         Board();
-        Board (Trou* cases_existantes);
 
         //variables
         Trou *cases;
@@ -30,15 +29,6 @@ Board::Board() {
     tour = true;
     ingame = true;
 }
-
-Board::Board(Trou* cases_existantes){
-    cases = cases_existantes;
-    gainJ1 = 0;
-    gainJ2 = 0;
-    tour = true;
-    ingame = true;
-}
-
 
 /**
  * Affiche le board

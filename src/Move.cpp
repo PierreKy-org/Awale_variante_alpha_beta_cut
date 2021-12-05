@@ -7,8 +7,8 @@ class Move {
         int starting_hole;
         char color;
 
-        //Functions
-        Move(int starting_hole, char color);
+        //Constructeur
+        Move(int , char );
 };
 
 /**

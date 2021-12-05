@@ -49,7 +49,6 @@ bool is_a_move_legal(Board board, Move move, int joueur){
         || (startingHole > 15)){
             return false;
         }
-    
     //Vérifie que la case de départ appartienne bien au joueur
     if (startingHole%2 != joueur){
         return false;
@@ -57,6 +56,8 @@ bool is_a_move_legal(Board board, Move move, int joueur){
 
     //Vérifie que la case contienne des graines
     if (move.color == 'B'){
+        //La ligne juste en dessous fait des segfault, elle est pas nécessaire mais je la garde pour la posterité.
+        //printf("number of graines : %s", board.cases[startingHole].graine_bleu);
         return (board.cases[startingHole].graine_bleu > 0 );
     }else{
         return (board.cases[startingHole].graine_rouge > 0);
@@ -72,6 +73,8 @@ void sowing_red(Board board, Move move, int joueur){
     int totalDeGraines = board.cases[startingHole].graine_rouge;
     int caseActuelle;
 
+    board.cases[startingHole].empty_color(move.color); //Enlève les graines de la case de départ 
+
     int compteur = 1;//Commence à un pour mettre dans la case suivante directement
     while (totalDeGraines > 0){
         caseActuelle = (startingHole + compteur)%16;
@@ -80,6 +83,7 @@ void sowing_red(Board board, Move move, int joueur){
         //C'est à dire : les cases de l'adversaire et surtout pas les notres
         if (caseActuelle == startingHole){
             //Skip si on remet une graine dans la case de départ
+            compteur++;
             continue;
         }
         board.cases[caseActuelle].addRed();
@@ -95,8 +99,10 @@ void sowing_red(Board board, Move move, int joueur){
  */ 
 void sowing_blue(Board board, Move move, int joueur){
     int startingHole = move.starting_hole;
-    int totalDeGraines = board.cases[startingHole].graine_rouge;
+    int totalDeGraines = board.cases[startingHole].graine_bleu;
     int caseActuelle;
+
+    board.cases[startingHole].empty_color(move.color); //Enlève les graines de la case de départ 
 
     int compteur = 1;//Commence à un pour mettre dans la case suivante directement
     while (totalDeGraines > 0){
@@ -112,6 +118,11 @@ void sowing_blue(Board board, Move move, int joueur){
     }
 }
 
+/**
+ * Joue un coup sur le board. 
+ * La fonction ne vérifie pas si le coup est jouable ou non elle le joue juste.
+ * (il faut donc s'assurer que c'est jouable avant de le jouer)
+ */ 
 void execute_a_move(Board board, Move move, int joueur){
     if (move.color == 'B'){
         sowing_blue(board, move, joueur);
