@@ -13,7 +13,7 @@ Move parse_a_move(string defaultInput=""){
     string input;
 
     if(defaultInput == ""){
-        cout << "Enter a move";
+        cout << "\nEnter a move : ";
         cin >> input; 
     } else {
         input = defaultInput;
@@ -68,7 +68,7 @@ bool is_a_move_legal(Board board, Move move, int joueur){
 /**
  * règle d'essaimage pour les graines rouges
  */ 
-void sowing_red(Board board, Move move, int joueur){
+int sowing_red(Board board, Move move, int joueur){
     int startingHole = move.starting_hole;
     int totalDeGraines = board.cases[startingHole].graine_rouge;
     int caseActuelle;
@@ -91,13 +91,14 @@ void sowing_red(Board board, Move move, int joueur){
 
         compteur++;
     }
+    return caseActuelle; //renvoit la case actuelle pour savoir d'où on repart lors de la capture
 }
 /**
  * règle d'essaimage pour les graines bleues
  * On ne vérifie pas si l'on remet dans la case de départ car les
  * graines bleues ne peuvent pas être mises dans la case du joueur qui les joue
  */ 
-void sowing_blue(Board board, Move move, int joueur){
+int sowing_blue(Board board, Move move, int joueur){
     int startingHole = move.starting_hole;
     int totalDeGraines = board.cases[startingHole].graine_bleu;
     int caseActuelle;
@@ -116,6 +117,7 @@ void sowing_blue(Board board, Move move, int joueur){
         }
         compteur++;
     }
+    return caseActuelle;
 }
 
 /**
@@ -123,10 +125,12 @@ void sowing_blue(Board board, Move move, int joueur){
  * La fonction ne vérifie pas si le coup est jouable ou non elle le joue juste.
  * (il faut donc s'assurer que c'est jouable avant de le jouer)
  */ 
-void execute_a_move(Board board, Move move, int joueur){
+int execute_a_move(Board board, Move move, int joueur){
+    int caseDeFin;
     if (move.color == 'B'){
-        sowing_blue(board, move, joueur);
+        caseDeFin = sowing_blue(board, move, joueur);
     }else{
-        sowing_red(board, move, joueur);
+        caseDeFin = sowing_red(board, move, joueur);
     }
+    return caseDeFin;
 }
