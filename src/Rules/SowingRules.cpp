@@ -2,8 +2,8 @@
 #include <cstdlib>  
 #include <sstream>
 #include <string>
-#include "Move.cpp"
-#include "Board.cpp"
+#include "../Entities/Move.cpp"
+#include "../Entities/Board.cpp"
 using namespace std;
 
 

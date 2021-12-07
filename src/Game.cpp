@@ -1,11 +1,10 @@
 #include <sstream>
-#include "Board.cpp"
+#include "Rules/CapturingRules.cpp"
 
 
 
 int main(){
     Board board;
-    board.printer();
 }
 
 /**

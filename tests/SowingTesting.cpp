@@ -1,5 +1,5 @@
 #include <sstream>
-#include "../src/SowingRules.cpp"
+#include "../src/Rules/SowingRules.cpp"
 
 
 //Un seul digit avant le B
@@ -227,13 +227,13 @@ bool testAfterMakingMove05(){
 
 }
 
-int testing (char* functionName, bool (*function)()){
-    printf("\nTesting %s : \n", functionName);
+int testing (char* functionName, bool (*function)(), bool quiet=true){
+    if (!quiet) {printf("\nTesting %s : \n", functionName);}
     if (function()){
-        printf("Test Passed\n");
+        if (!quiet) {printf("Test Passed\n");}
         return 1;
     } else {
-        printf("Test Failed     !!!!!!!!!!!!!!!!!!!!!!\n");
+        if (!quiet) {printf("Test Failed     !!!!!!!!!!!!!!!!!!!!!!\n");}
         return 0;
     }
 }

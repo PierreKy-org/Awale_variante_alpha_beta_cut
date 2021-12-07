@@ -1,5 +1,5 @@
 #include <sstream>
-#include "../src/WinningRules.cpp"
+#include "../src/Rules/WinningRules.cpp"
 
 
 
@@ -154,13 +154,13 @@ bool testEndGame07(){
     return !(is_it_the_end_of_the_game(board));
 }
 
-int testing (char* functionName, bool (*function)()){
-    printf("\nTesting %s : \n", functionName);
+int testing (char* functionName, bool (*function)(), bool quiet=true){
+    if (!quiet) {printf("\nTesting %s : \n", functionName);}
     if (function()){
-        printf("Test Passed\n");
+        if (!quiet) {printf("Test Passed\n");}
         return 1;
     } else {
-        printf("Test Failed     !!!!!!!!!!!!!!!!!!!!!!\n");
+        if (!quiet) {printf("Test Failed     !!!!!!!!!!!!!!!!!!!!!!\n");}
         return 0;
     }
 }
