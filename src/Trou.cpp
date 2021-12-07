@@ -17,6 +17,7 @@ class Trou{
         int empty_color(char);
         int empty_all();
         bool equals(Trou);
+        bool isTakeable();
         std::string toString();
 };
 
@@ -62,6 +63,11 @@ int Trou::empty_all(){
     this->graine_bleu = 0;
     this->graine_rouge = 0;
     return sum;
+}
+
+bool Trou::isTakeable(){
+    int grainesTotal = this->graine_bleu + this->graine_rouge;
+    return (grainesTotal == 2) || (grainesTotal == 3);
 }
 
 /**

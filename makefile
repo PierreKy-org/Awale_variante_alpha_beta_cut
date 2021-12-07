@@ -1,12 +1,15 @@
 run :	build
 	@./builds/main
 
-testAll : buildSowingTest buildWinningTest
+testAll : buildSowingTest buildWinningTest buildCapturingTest
 	@echo "----------------------------------Launching the sowing tests...----------------------------------"
 	@./builds/tests/sowing
 
 	@echo "----------------------------------Launching the winning tests...----------------------------------"
 	@./builds/tests/winning
+
+	@echo "----------------------------------Launching the capturing tests...----------------------------------"
+	@./builds/tests/capturing
 
 testSowing : buildSowingTest
 	@echo "----------------------------------Launching the sowing tests...----------------------------------"
@@ -16,8 +19,10 @@ testWinning : buildWinningTest
 	@echo "----------------------------------Launching the winning tests...----------------------------------"
 	@./builds/tests/winning
 
-#@echo "----------------------------------Launching the capture tests...----------------------------------"
-#@./builds/tests/sowing
+testCapturing : buildCapturingTest
+	@echo "----------------------------------Launching the capturing tests...----------------------------------"
+	@./builds/tests/capturing 
+
 
 build : 
 	@g++ src/Game.cpp -o builds/main
@@ -27,5 +32,8 @@ buildSowingTest :
 
 buildWinningTest : 
 	@g++ tests/WinningTesting.cpp -o builds/tests/winning
+
+buildCapturingTest : 
+	@g++ tests/CapturingTesting.cpp -o builds/tests/capturing
 
 #TODO : Definir un build optimisé
