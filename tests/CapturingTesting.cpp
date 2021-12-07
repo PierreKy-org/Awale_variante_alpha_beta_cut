@@ -20,8 +20,6 @@ bool compareTwoCases(Trou case1[16], Trou case2[16]){
 bool capturingTest01(){
     int joueur = 0;
     Board board;
-    int indiceDeLaFinDuMove;
-    board.printer();
     Board comparisonBoard; //Board qui contiendra le résultat attendu (est comparé avec le premier)
 
     board.cases[3].graine_bleu = 0;
@@ -29,21 +27,23 @@ bool capturingTest01(){
     board.cases[1].graine_bleu = 0;
     board.cases[0].graine_bleu = 0;
 
-    capture(board, 3, 0);
+    board = capture(board, 3, 0);
     
     board.printer();
     comparisonBoard.cases[0].graine_rouge = 0;
     comparisonBoard.cases[1].graine_rouge = 0;
     comparisonBoard.cases[2].graine_rouge = 0;
     comparisonBoard.cases[3].graine_rouge = 0;
+
     comparisonBoard.cases[0].graine_bleu = 0;
     comparisonBoard.cases[1].graine_bleu = 0;
     comparisonBoard.cases[2].graine_bleu = 0;
     comparisonBoard.cases[3].graine_bleu = 0;
+    comparisonBoard.printer();
 
     //Le joueur aura gagné 6 graines
-    board.gainJ1 = 8;
-
+    comparisonBoard.gainJ1 = 8;
+    printf("%d uwu %d uwu %d uwu %d",board.gainJ1, board.gainJ2, comparisonBoard.gainJ1, comparisonBoard.gainJ2);
     return compareTwoCases(board.cases, comparisonBoard.cases) && (board.gainJ1 == comparisonBoard.gainJ1);
 }
 
