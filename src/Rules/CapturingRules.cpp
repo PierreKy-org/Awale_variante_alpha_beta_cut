@@ -19,7 +19,7 @@ using namespace std;
  *  2.2)      Sinon on arrête la fonction
  */ 
 Board capture(Board board, int start_index, int joueur){
-    printf("called on %d", start_index);
+    printf("called on %d \n", start_index);
     int n;
     for (int i=0; i < 16; i++){
         n = start_index - i;
@@ -38,5 +38,6 @@ Board capture(Board board, int start_index, int joueur){
             return board;
         }
     }
+    //Normalement on rentre jamais là dedans
     return board;
 }

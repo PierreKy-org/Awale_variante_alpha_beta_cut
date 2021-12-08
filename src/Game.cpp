@@ -7,7 +7,7 @@ int main(){
     Board board;
     int currentPlayer = 0;
     int endingPosition;
-
+    
     printf("LA CAPTURE NE FONCTIONNE PAS DANS LE MAIN, IL FAUT VOIR LA VALEUR DE ENDING POSITION");
     printf("Etat du board au début de la game : \n");
     board.printer();
