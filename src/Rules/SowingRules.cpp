@@ -2,7 +2,6 @@
 #include <cstdlib>  
 #include <sstream>
 #include <string>
-#include "../Entities/Move.cpp"
 #include "../Entities/Board.cpp"
 using namespace std;
 
@@ -21,7 +20,7 @@ Move parse_a_move(string defaultInput=""){
 
     char color = input[input.length() -1];
     input.erase(input.length() -1, 1);
-    int start = stoi(input);
+    int start = stoi(input)-1;
 
     Move move = Move(start, color);
     if ((color != 'B') && (color != 'R')){
