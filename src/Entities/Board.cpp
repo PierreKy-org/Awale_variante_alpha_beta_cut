@@ -1,6 +1,6 @@
 #include <sstream>
 #include "Trou.cpp"
-
+#include "Move.cpp"
 class Board {
 
     public:           
@@ -17,6 +17,7 @@ class Board {
         //fonctions
         int is_a_player_starving();
         void printer();
+        Move* allMoves();
 };
 
 /**
@@ -71,8 +72,4 @@ int Board::is_a_player_starving(){
 
     return (j1_starving == 0 || j2_starving == 0);
 }
-
-
-
-
 
