@@ -132,5 +132,6 @@ int execute_a_move(Board board, Move move, int joueur){
     }else{
         caseDeFin = sowing_red(board, move, joueur);
     }
+    printf("Case de fin : %d\n", caseDeFin);
     return caseDeFin;
 }

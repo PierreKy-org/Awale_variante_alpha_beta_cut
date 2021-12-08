@@ -34,9 +34,15 @@ Board::Board() {
  * Affiche le board
  */ 
 void Board::printer(){
-    std::cout << "[ ";
+    std::cout << "Affichage du board : [\n";
+    int cpt=1;
     for(int i = 0; i < 16; i++){
+
         std::cout << cases[i].toString() << ", ";
+        if (cpt%4==0){
+            std::cout << "\n";
+        }
+        cpt++;
     }
     std::cout << "]" <<std::endl;
 }

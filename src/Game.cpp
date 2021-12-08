@@ -9,6 +9,8 @@ int main(){
     int endingPosition;
 
     printf("LA CAPTURE NE FONCTIONNE PAS DANS LE MAIN, IL FAUT VOIR LA VALEUR DE ENDING POSITION");
+    printf("Etat du board au début de la game : \n");
+    board.printer();
     while (board.ingame){
         Move currentMove = parse_a_move();
 
