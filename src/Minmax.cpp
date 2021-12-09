@@ -75,7 +75,7 @@ int evaluation(Board board){
                 // ecrire la fn :
                 
             int casse =  execute_a_move(b,moves[i], 0);
-            capture(b,casse,0);
+            b = capture(b,casse,0);
             // on joue le coup i a partir de la position
             // pos_courante et on met le résultat
             // dans pos_next

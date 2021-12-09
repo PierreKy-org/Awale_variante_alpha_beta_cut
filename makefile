@@ -1,6 +1,9 @@
 run :	build
 	@./builds/main
 
+minmax: buildMinmax
+	@./builds/minmax
+
 testAll : buildSowingTest buildWinningTest buildCapturingTest
 	@echo "----------------------------------Launching the sowing tests...----------------------------------"
 	@./builds/tests/sowing
@@ -26,6 +29,9 @@ testCapturing : buildCapturingTest
 
 build : 
 	@g++ src/Game.cpp -o builds/main
+
+buildMinmax:
+	@g++ src/Minmax.cpp -o builds/minmax
 
 buildSowingTest : 
 	@g++ tests/SowingTesting.cpp -o builds/tests/sowing
