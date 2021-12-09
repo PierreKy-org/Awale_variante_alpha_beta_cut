@@ -9,8 +9,8 @@ class Board {
 
         //variables
         Trou *cases;
-        char gainJ1;
-        char gainJ2;
+        short gainJ1;
+        short gainJ2;
         bool tour;
         bool ingame;
 
@@ -18,6 +18,7 @@ class Board {
         int is_a_player_starving();
         void printer();
         Move* allMoves();
+        void copy(Board b);
 };
 
 /**
@@ -73,3 +74,14 @@ int Board::is_a_player_starving(){
     return (j1_starving == 0 || j2_starving == 0);
 }
 
+//deep copy of board
+void Board::copy(Board b){
+    
+    this->ingame = b.ingame;
+    this->tour = b.tour;
+    this->gainJ2 = b.gainJ2;
+    this->gainJ1 = b.gainJ1;
+    for (int i = 0; i < 16; i++){
+        this->cases[i] = b.cases[i];
+    }
+}
