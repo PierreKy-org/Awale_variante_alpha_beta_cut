@@ -7,6 +7,7 @@ class Move {
 
         //Constructeur
         Move(int , char );
+        void printer();
 };
 
 /**
@@ -15,4 +16,9 @@ class Move {
 Move::Move(int start, char col) {
     starting_hole = start;
     color = col;
+}
+
+
+void Move::printer(){
+    std::cout << starting_hole << color << std::endl;
 }
