@@ -55,7 +55,6 @@ int valeurMinMax(Board board, int joueur, int prof, int profMax){
             // on retourne VALMAX (=48) si l'ordi gagne et -48 si l'ordi perd  et 0 si nul
     } */
     if (prof == profMax) {
-            std::cout << "evalution en cours : "<< evaluation(board) << std::endl;
             return evaluation(board);
             // dans un premier temps l'évaluation sera la
             // différence du nb de pions pris
@@ -87,19 +86,21 @@ int valeurMinMax(Board board, int joueur, int prof, int profMax){
         cpt++;
     }
     int res;
-    if (joueur){
+    if (joueur%2 == 0){
             for(int i=0;i<size;i++){
                 std::cout << tab_valeurs[i] << std::endl;
             }
             int* x = std::max_element(tab_valeurs, tab_valeurs+size, abs_compare);
             std::cout << "LE MAXIMUM EST : " << *x << " | " << std::distance(tab_valeurs, x) << std::endl;    
             res = *x;
-            } else {
+            
+    } 
+    else {
             for(int i=0;i<size;i++){
                 std::cout << tab_valeurs[i] << std::endl;
             }
             int* x = std::min_element(tab_valeurs, tab_valeurs+size, abs_compare);
-            std::cout << "LE MINIMUM EST : " << *x << std::endl;
+            std::cout << "LE MINIMUM EST : " << *x << " | " << std::distance(tab_valeurs, x) << std::endl;
             res = *x;
     }
     return res;
@@ -108,6 +109,6 @@ int valeurMinMax(Board board, int joueur, int prof, int profMax){
 
 int main(){
     Board board;
-    std::cout << valeurMinMax(board,0,0,3) << std::endl;
+    std::cout << valeurMinMax(board,0,0,5) << std::endl;
     return 0;
 }
