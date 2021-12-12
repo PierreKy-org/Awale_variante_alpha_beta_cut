@@ -7,17 +7,13 @@
 #include "Rules/CapturingRules.cpp"
 using namespace std;
 
-bool abs_compare(int a, int b)
-{
-    return (std::abs(a) < std::abs(b));
-}
 
 std::tuple<Move*, int> allMoves(Board board, int joueur){
     int size = 16; //
     Move *listMoves = (Move*)malloc(sizeof(Move)*size);
     int cpt = 0;
     //TODO OPTIMISATION PASSER PAR 1 TROU SUR 2 
-    for(int i = 0; i < 16; i++){
+    for(int i = joueur; i < 16; i+=2){
         Move current_moveR(i,'R');
         Move current_moveB(i,'B');
         if(is_a_move_legal(board, current_moveR, joueur)){
@@ -38,7 +34,6 @@ std::tuple<Move*, int> allMoves(Board board, int joueur){
     free(listMoves);
     return {listMovesFinal,cpt};
 }
-
 int evaluation(Board board){
     return board.gainJ1-board.gainJ2;
 }
@@ -48,7 +43,6 @@ int valeurMinMax(Board board, int joueur, int prof, int profMax){
     // ordi_joue est un booleen qui est vrai si l'ordi joue
     Board b;
      // En C on crée dans la pile = TRES rapide
-
     /* if (positionFinale(pos_courante, ordi_joue,prof)){
             // code à écrire
         
@@ -56,16 +50,15 @@ int valeurMinMax(Board board, int joueur, int prof, int profMax){
     } */
     if (prof == profMax) {
             return evaluation(board);
-            // dans un premier temps l'évaluation sera la
-            // différence du nb de pions pris
     }
-    auto [moves, size] = allMoves(board, joueur%2);
+
+    auto [moves, size] = allMoves(board, joueur);
     int tab_valeurs[size];
     int cpt = 1;
     for(int i=0;i<size;i++){
-        std::cout << "fils numéro " << cpt << std::endl;
+        //std::cout << "fils numéro " << cpt << std::endl;
+ 
         b.copy(board);
-        
         // on joue le coup i
         // ecrire la fn coupValide(pos_courante,ordi_joue,i)
         // elle teste si on peut prendre les pions dans la
@@ -73,34 +66,32 @@ int valeurMinMax(Board board, int joueur, int prof, int profMax){
         // est pos_courante
         Move currentMove = moves[i];
         // ecrire la fn :
-            
-        int casse =  execute_a_move(b,moves[i], 0);
-        b = capture(b,casse,0);
+        int casse =  execute_a_move(b,moves[i], joueur);
+        b = capture(b,casse, joueur);
         // on joue le coup i a partir de la position
         // pos_courante et on met le résultat
         // dans pos_next
         //jouerCoup(&pos_next,pos_courante,joueur,i);
         // pos_next devient la position courante, et on change le joueur
-        joueur++;
-        tab_valeurs[i]=valeurMinMax(b, joueur%2,prof+1,profMax);
+        tab_valeurs[i]=valeurMinMax(b, (joueur+1)%2,prof+1,profMax);
         cpt++;
+        
     }
     int res;
-    if (joueur%2 == 0){
-            for(int i=0;i<size;i++){
+    if (joueur == 0) {
+            /*  for(int i=0;i<size;i++){
                 std::cout << tab_valeurs[i] << std::endl;
-            }
-            int* x = std::max_element(tab_valeurs, tab_valeurs+size, abs_compare);
-            std::cout << "LE MAXIMUM EST : " << *x << " | " << std::distance(tab_valeurs, x) << std::endl;    
+            }  */
+            int* x = std::max_element(tab_valeurs, tab_valeurs+size);
+           // std::cout << "LE MAXIMUM EST : " << *x << " | " << std::distance(tab_valeurs, x) << std::endl;    
             res = *x;
-            
     } 
     else {
-            for(int i=0;i<size;i++){
+           /*   for(int i=0;i<size;i++){
                 std::cout << tab_valeurs[i] << std::endl;
-            }
-            int* x = std::min_element(tab_valeurs, tab_valeurs+size, abs_compare);
-            std::cout << "LE MINIMUM EST : " << *x << " | " << std::distance(tab_valeurs, x) << std::endl;
+            } */
+            int* x = std::min_element(tab_valeurs, tab_valeurs+size); 
+           // std::cout << "LE MINIMUM EST : " << *x << " | " << std::distance(tab_valeurs, x) << std::endl;
             res = *x;
     }
     return res;
@@ -109,6 +100,6 @@ int valeurMinMax(Board board, int joueur, int prof, int profMax){
 
 int main(){
     Board board;
-    std::cout << valeurMinMax(board,0,0,5) << std::endl;
+    std::cout << valeurMinMax(board,0,0,7) << std::endl;
     return 0;
 }
