@@ -28,10 +28,10 @@ testCapturing : buildCapturingTest
 
 
 build : 
-	@g++ src/Game.cpp -o builds/main
+	@g++ -O3 src/Game.cpp -o builds/main
 
 buildMinmax:
-	@g++ src/Minmax.cpp -o builds/minmax
+	@g++ -O3 src/Minmax.cpp -o builds/minmax
 
 buildSowingTest : 
 	@g++ tests/SowingTesting.cpp -o builds/tests/sowing
@@ -41,5 +41,3 @@ buildWinningTest :
 
 buildCapturingTest : 
 	@g++ tests/CapturingTesting.cpp -o builds/tests/capturing
-
-#TODO : Definir un build optimisé

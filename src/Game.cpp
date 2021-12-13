@@ -1,54 +1,67 @@
 #include <sstream>
-#include "Rules/CapturingRules.cpp"
+#include "Minmax.cpp"
+
+const int WE_ARE_PLAYER = 0; //Définit quel joueur on est dans la game (0 ou 1);
+const int PROFONDEUR = 6;
 
 
+void print_turn(int currentPlayer){
+    if (currentPlayer == 0){
+        printf("---- Au tour du joueur IMPAIR\n");
+    } else {
+        printf("---- Au tour du joueur PAIR\n");
+    }
+}
 
 int main(){
     Board board;
+    bool illegal_flag = false;
     int currentPlayer = 0;
     int endingPosition;
     
-    printf("LA CAPTURE NE FONCTIONNE PAS DANS LE MAIN, IL FAUT VOIR LA VALEUR DE ENDING POSITION");
-    printf("Etat du board au début de la game : \n");
+    printf("==================== Début de la partie : \n");
     board.printer();
+
     while (board.ingame){
-        Move currentMove = parse_a_move();
+        illegal_flag = false; //On reset le flag pour pouvoir essayer un autre coup
+        print_turn(currentPlayer);
 
-        if (is_a_move_legal(board, currentMove, currentPlayer)){
-            endingPosition = execute_a_move(board, currentMove, currentPlayer);
+        /*
+        On est le joueur courrant
+        Quand c'est notre tour on ne vérifie pas que le coup soit legal 
+        (IL LE SERA FORCEMENT)
+        */
+        if (currentPlayer == WE_ARE_PLAYER){
+            printf("Calcul en cours ...\n");
+            Move ourMove = valeurMinMax(board,0,0,PROFONDEUR, Move(99,'Z'));
+            printf("On joue le coup : %d%c\n", ourMove.starting_hole, ourMove.color);
+            ourMove.starting_hole--;
+            int endingPosition = execute_a_move(board, ourMove, currentPlayer);
             board = capture(board, endingPosition, currentPlayer);
-            board.ingame = !(is_it_the_end_of_the_game(board));
-            currentPlayer = (currentPlayer + 1)%2;
-            printf("----- The board : ------\n");
-            board.printer();
-            printf("\ngainJ1 = %d\ngainJ2 = %d", board.gainJ1, board.gainJ2);
-        }
-        //On reste dans la boucle (sur le même joueur)
-        else{
-            printf("Illegal Move, select another\n");
-        }
 
+        } else {
+
+            //On joue le coup de l'adversaire
+            Move theirMove = parse_a_move();
+
+            if (is_a_move_legal(board, theirMove, currentPlayer)){
+                endingPosition = execute_a_move(board, theirMove, currentPlayer);
+                board = capture(board, endingPosition, currentPlayer);
+            } else {
+                printf("Coup illegal !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n");
+                illegal_flag = true;
+                    
+            }
+        }
+        //Si le coup joué était illegal, on n'actualise pas la game
+        if (!illegal_flag){
+            printf("Etat du board après le coup\n");
+            board.printer();
+            printf("\ngainJ1 = %d\ngainJ2 = %d\n", board.gainJ1, board.gainJ2);
+            currentPlayer = (currentPlayer + 1)%2;
+            board.ingame = !(is_it_the_end_of_the_game(board));
+        }
     }
 
-    printf("it's the end of the world as we know it (and i feel fine)");
+    printf("Fin de la partie");
 }
-
-/**
-    srand((unsigned int)time(0)); //Modifie la liste pseudorandom par rapport à l'heure où le programme s'éxecute (si tu execute au meme moment alors on aura le meme resultat)
-
-    //BOUCLE DE JEU 
-    while(ingame){
-        //Le joueur choisie une case
-        int v1 = rand() % 6;         
-        int v2 = rand() % 6 + 6;     
-        //UN tour sur 2 le joueur 1 joue    
-        if(tour){
-            gainJ1 += deplacementEtGain(cases,v1); // On ajoute le nombre de graine gagné au score du joueur 
-            tour = false;
-        }
-        else{
-            gainJ2 += deplacementEtGain(cases, v2); //On ajoute le nombre de graine gagné au score du joueur
-            tour = true;
-        } 
-    } 
-*/
