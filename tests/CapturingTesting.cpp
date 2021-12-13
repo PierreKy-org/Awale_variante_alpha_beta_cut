@@ -27,7 +27,7 @@ bool capturingTest01(){
     board.cases[1].graine_bleu = 0;
     board.cases[0].graine_bleu = 0;
 
-    board = capture(board, 3, 0);
+    board = capture(board, 3, joueur);
     
     comparisonBoard.cases[0].graine_rouge = 0;
     comparisonBoard.cases[1].graine_rouge = 0;
@@ -59,8 +59,7 @@ bool capturingTest02(){
     board.cases[1].graine_bleu = 0;
     board.cases[0].graine_bleu = 0;
 
-    board = capture(board, 3, 0);
-    int i = (-1%16);
+    board = capture(board, 3, joueur);
 
     comparisonBoard.cases[15].graine_rouge = 0;
     comparisonBoard.cases[0].graine_rouge = 0;
@@ -96,7 +95,7 @@ bool capturingTest03(){
     board.cases[1].graine_bleu = 0;
     board.cases[0].graine_bleu = 0;
 
-    board = capture(board, 4, 0);
+    board = capture(board, 4, joueur);
     
     //On ne peut prendre que depuis 4 du coup (vu que 3 fonctionne)
     comparisonBoard.cases[4].graine_rouge = 0;

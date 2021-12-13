@@ -23,10 +23,9 @@ Board capture(Board board, int start_index, int joueur){
     int n;
     for (int i=0; i < 16; i++){
         n = start_index - i;
-
         //ce if est moche mais c'est un modulo python à la main
         if (n < 0){
-            n = 15;
+            n = (start_index - i) + 16;
         }
         if (board.cases[n].isTakeable()){
             if (joueur == 0){

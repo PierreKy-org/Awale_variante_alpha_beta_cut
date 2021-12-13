@@ -26,6 +26,10 @@ testCapturing : buildCapturingTest
 	@echo "----------------------------------Launching the capturing tests...----------------------------------"
 	@./builds/tests/capturing 
 
+testMinmax : buildMinmaxTest
+	@echo "----------------------------------Launching the minmax tests...----------------------------------"
+	@./builds/tests/minmax 
+
 
 build : 
 	@g++ -O3 src/Game.cpp -o builds/main
@@ -41,3 +45,8 @@ buildWinningTest :
 
 buildCapturingTest : 
 	@g++ tests/CapturingTesting.cpp -o builds/tests/capturing
+
+buildMinmaxTest : 
+	@g++ tests/MinmaxTest.cpp -o builds/tests/minmax
+
+#TODO : Definir un build optimisé
