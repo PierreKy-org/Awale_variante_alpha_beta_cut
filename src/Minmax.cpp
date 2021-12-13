@@ -106,9 +106,3 @@ Move valeurMinMax(Board board, int joueur, int prof, int profMax, Move move){
     return res;
 }
 
-
-int main(){
-    Board board;
-    valeurMinMax(board,0,0,6, Move(0,'R')).printer();
-    return 0;
-}
