@@ -4,8 +4,15 @@
 #include<bits/stdc++.h>
 #include<iterator>
 #include <tuple>
+#include <algorithm>
 #include "Rules/CapturingRules.cpp"
+
 using namespace std;
+
+bool compare(Move a, Move b){
+
+    return a.getGain() <  b.getGain();
+}
 
 
 std::tuple<Move*, int> allMoves(Board board, int joueur){
@@ -39,7 +46,7 @@ int evaluation(Board board){
 }
 
 
-int valeurMinMax(Board board, int joueur, int prof, int profMax){
+Move valeurMinMax(Board board, int joueur, int prof, int profMax, Move move){
     // ordi_joue est un booleen qui est vrai si l'ordi joue
     Board b;
      // En C on crée dans la pile = TRES rapide
@@ -49,11 +56,13 @@ int valeurMinMax(Board board, int joueur, int prof, int profMax){
             // on retourne VALMAX (=48) si l'ordi gagne et -48 si l'ordi perd  et 0 si nul
     } */
     if (prof == profMax) {
-            return evaluation(board);
+            move.setGain(evaluation(board));
+            return move;
     }
 
     auto [moves, size] = allMoves(board, joueur);
-    int tab_valeurs[size];
+     Move *tab_valeurs = (Move*)malloc(sizeof(Move)*size);
+
     int cpt = 1;
     for(int i=0;i<size;i++){
         //std::cout << "fils numéro " << cpt << std::endl;
@@ -73,16 +82,16 @@ int valeurMinMax(Board board, int joueur, int prof, int profMax){
         // dans pos_next
         //jouerCoup(&pos_next,pos_courante,joueur,i);
         // pos_next devient la position courante, et on change le joueur
-        tab_valeurs[i]=valeurMinMax(b, (joueur+1)%2,prof+1,profMax);
+        tab_valeurs[i]=valeurMinMax(b, (joueur+1)%2,prof+1,profMax, currentMove);
         cpt++;
         
     }
-    int res;
+    Move res(19,'Y');
     if (joueur == 0) {
             /*  for(int i=0;i<size;i++){
                 std::cout << tab_valeurs[i] << std::endl;
             }  */
-            int* x = std::max_element(tab_valeurs, tab_valeurs+size);
+            Move* x = std::max_element(tab_valeurs, tab_valeurs+size, compare);
            // std::cout << "LE MAXIMUM EST : " << *x << " | " << std::distance(tab_valeurs, x) << std::endl;    
             res = *x;
     } 
@@ -90,7 +99,7 @@ int valeurMinMax(Board board, int joueur, int prof, int profMax){
            /*   for(int i=0;i<size;i++){
                 std::cout << tab_valeurs[i] << std::endl;
             } */
-            int* x = std::min_element(tab_valeurs, tab_valeurs+size); 
+            Move* x = std::min_element(tab_valeurs, tab_valeurs+size, compare); 
            // std::cout << "LE MINIMUM EST : " << *x << " | " << std::distance(tab_valeurs, x) << std::endl;
             res = *x;
     }
@@ -100,6 +109,6 @@ int valeurMinMax(Board board, int joueur, int prof, int profMax){
 
 int main(){
     Board board;
-    std::cout << valeurMinMax(board,0,0,7) << std::endl;
+    valeurMinMax(board,0,0,6, Move(0,'R')).printer();
     return 0;
 }
