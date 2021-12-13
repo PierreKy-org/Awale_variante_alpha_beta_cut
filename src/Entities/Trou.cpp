@@ -18,7 +18,7 @@ class Trou{
         int empty_all();
         bool equals(Trou);
         bool isTakeable();
-        std::string toString();
+        std::string toString(int);
 };
 
 Trou::Trou(){
@@ -77,8 +77,14 @@ bool Trou::equals(Trou other_trou){
     return (this->graine_bleu == other_trou.graine_bleu) && (this->graine_rouge == other_trou.graine_rouge);
 }
 
-std::string Trou::toString() {
+std::string Trou::toString(int i) {
     std::ostringstream strout;
+    if (i < 10){
+        strout<< "0" <<  i;
+    } else {
+        strout<< i;
+
+    }
     strout<< "(\033[1;31mR : " << +this->graine_rouge << "\033[0m|\033[1;34mB : " << +this->graine_bleu << "\033[0m)";
     return strout.str();
 }
