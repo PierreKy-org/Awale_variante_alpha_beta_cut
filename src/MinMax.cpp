@@ -34,7 +34,6 @@ std::vector<Board> allBoards(Board board, int joueur){
             int endingPosition =  execute_a_move(newBoard,current_moveR, joueur);
             newBoard = capture(newBoard, endingPosition, joueur);
             listBoard.push_back(newBoard);
-
             total++;
         }
 
@@ -64,7 +63,6 @@ int alphabeta(Board board, int joueur, int profondeur, int alpha, int beta){
         for (Board b : boards){
          
             v = max(v,alphabeta(b, (joueur+1)%2, (profondeur-1), alpha, beta));
-            
             if(v >= beta){
                 break;
             }
@@ -78,10 +76,10 @@ int alphabeta(Board board, int joueur, int profondeur, int alpha, int beta){
         for (Board b : boards){
            
             v = min(v, alphabeta(b, (joueur+1)%2, (profondeur-1), alpha, beta));
-            if (beta <= alpha){
+            if (v <= alpha){
                 break;
             }
-            beta = min(beta, v);
+            beta = min(beta, v);     
         }
         return v;
     }

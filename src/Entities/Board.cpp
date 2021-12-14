@@ -1,6 +1,10 @@
 #include <sstream>
 #include "Trou.cpp"
 #include "Move.cpp"
+#include <vector>
+
+ 
+using namespace std;
 class Board {
 
     public:           
@@ -8,7 +12,7 @@ class Board {
         Board();
 
         //variables
-        Trou *cases;
+        std::vector<Trou> cases;
         short gainJ1;
         short gainJ2;
         bool ingame;
@@ -23,7 +27,9 @@ class Board {
  * Constructeur
  */ 
 Board::Board() {
-    cases = new Trou[16];
+    for(int i = 0; i < 16; i++){
+        cases.push_back(Trou());
+    }
     gainJ1 = 0;
     gainJ2 = 0;
     ingame = true;

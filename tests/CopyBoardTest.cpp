@@ -140,7 +140,7 @@ bool testCopy04(){
 
 
 
-int testing (char* functionName, bool (*function)(), bool quiet=true){
+int testing (char* functionName, bool (*function)(), bool quiet=false){
     if (!quiet) {printf("\nTesting %s : \n", functionName);}
     if (function()){
         if (!quiet) {printf("Test Passed\n");}
