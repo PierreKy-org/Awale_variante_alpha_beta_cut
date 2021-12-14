@@ -11,6 +11,7 @@ class Move {
         void printer();
         int getGain();
         void setGain(int);
+        std::string toString();
 };
 
 /**
@@ -29,6 +30,11 @@ Move::Move(int start, char col, int gains) {
 
 void Move::printer(){
     std::cout << starting_hole << color << std::endl;
+}
+std::string Move::toString() {
+    std::ostringstream strout;
+    strout << starting_hole << color;
+    return strout.str();
 }
 
 int Move::getGain(){

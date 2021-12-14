@@ -27,6 +27,8 @@ std::vector<Move> allMoves(Board board, int joueur){
     TOTAL_NUMBERS_OF_POSITIONS+= listMoves.size();
     return  listMoves;
 }
+
+
 int evaluation(Board board){
     return board.gainJ1-board.gainJ2;
 }
@@ -34,7 +36,7 @@ int evaluation(Board board){
 
 int valeurMinMax(Board board, int joueur, int profondeur, int profondeurMax){
         
-    if(profondeur == profondeurMax){
+    if(profondeur == profondeurMax || is_it_the_end_of_the_game(board)){
         return evaluation(board);
     }
     int value;
@@ -65,3 +67,41 @@ int valeurMinMax(Board board, int joueur, int profondeur, int profondeurMax){
         }
         return value;
     }
+}
+Move playAMove(Board initialBoard, int joueur, int maxDepth){
+    std::map<std::string, int> values;
+    int depth = 0;
+    for(int i = 0; i < 16; i++){
+
+        char buffer_moveR[4];
+        sprintf(buffer_moveR, "%d%c",i,'R');
+        string moveR(buffer_moveR); 
+
+        char buffer_moveB[4];
+        sprintf(buffer_moveB, "%d%c",i,'B');
+        string moveB(buffer_moveR); 
+
+        Move current_moveR = parse_a_move(buffer_moveR);
+        if(is_a_move_legal(initialBoard, current_moveR, joueur)){
+            int val = valeurMinMax(initialBoard, joueur, depth,maxDepth);
+            values.insert(std::make_pair(moveR, val));
+        }
+        Move current_moveB = parse_a_move(buffer_moveB);
+        if(is_a_move_legal(initialBoard, current_moveB, joueur)){
+            int val = valeurMinMax(initialBoard, joueur, depth, maxDepth);
+            values.insert(std::make_pair(moveB, val));
+        }
+    }
+
+    //TODO faire le min pour quand on est J2
+    int max = -999;
+    string maxStr;
+    for (auto const& x : values)
+    {
+        if (x.second > max) {
+            max = x.second;
+            maxStr = x.first;
+        }
+    }
+    return parse_a_move(maxStr);
+}

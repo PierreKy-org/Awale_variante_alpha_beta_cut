@@ -1,5 +1,5 @@
 #include <sstream>
-#include "Minmax.cpp"
+#include "justwork.cpp"
 
 const int WE_ARE_PLAYER = 0; //Définit quel joueur on est dans la game (0 ou 1);
 const int PROFONDEUR = 5;
@@ -33,7 +33,7 @@ int main(){
         */
         if (currentPlayer == WE_ARE_PLAYER){
             printf("Calcul en cours ...\n");
-            Move ourMove = valeurMinMax(board,0,0,PROFONDEUR, Move(99,'Z'));
+            Move ourMove = playAMove(board, currentPlayer, PROFONDEUR);
             printf("On joue le coup : %d%c\n", ourMove.starting_hole, ourMove.color);
             //ourMove.starting_hole--;
             if(is_a_move_legal(board, ourMove, currentPlayer)){
@@ -69,6 +69,5 @@ int main(){
             board.ingame = !(is_it_the_end_of_the_game(board));
         }
     }
-
     printf("Fin de la partie");
 }
