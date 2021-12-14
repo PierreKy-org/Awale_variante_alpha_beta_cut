@@ -1,8 +1,8 @@
 #include <sstream>
 #include "MinMax.cpp"
 
-const int WE_ARE_PLAYER = 1; //Définit quel joueur on est dans la game (0 ou 1);
-const int PROFONDEUR = 4;
+const int WE_ARE_PLAYER = 0; //Définit quel joueur on est dans la game (0 ou 1);
+const int PROFONDEUR = 5;
 
 
 void print_turn(int currentPlayer){
@@ -26,15 +26,10 @@ int main(){
         illegal_flag = false; //On reset le flag pour pouvoir essayer un autre coup
         print_turn(currentPlayer);
 
-        /*
-        On est le joueur courrant
-        Quand c'est notre tour on ne vérifie pas que le coup soit legal 
-        (IL LE SERA FORCEMENT)
-        */
         if (currentPlayer == WE_ARE_PLAYER){
             printf("Calcul en cours ...\n");
             Move ourMove = playAMove(board, currentPlayer, PROFONDEUR);
-            printf("On joue le coup : %d%c\n", ourMove.starting_hole+1, ourMove.color);
+            printf("On joue le coup : %d%c\n", ourMove.starting_hole, ourMove.color);
             //ourMove.starting_hole--;
             if(is_a_move_legal(board, ourMove, currentPlayer)){
                 endingPosition = execute_a_move(board, ourMove, currentPlayer);
@@ -50,7 +45,21 @@ int main(){
         } else {
 
             //On joue le coup de l'adversaire
-            Move theirMove = parse_a_move();
+            printf("Calcul en cours ...\n");
+            Move theirMove = playAMove(board, currentPlayer, PROFONDEUR);
+            printf("On joue le coup : %d%c\n", theirMove.starting_hole, theirMove.color);
+            //ourMove.starting_hole--;
+            if(is_a_move_legal(board, theirMove, currentPlayer)){
+                endingPosition = execute_a_move(board, theirMove, currentPlayer);
+                board = capture(board, endingPosition, currentPlayer);
+                printf("... Nombre de positions calculées %d\n",total);
+                total = 0;
+
+            } else {
+                std::cout << "Coup illegal\n" << std::endl;
+                illegal_flag = true;
+            }
+
 
             if (is_a_move_legal(board, theirMove, currentPlayer)){
                 endingPosition = execute_a_move(board, theirMove, currentPlayer);

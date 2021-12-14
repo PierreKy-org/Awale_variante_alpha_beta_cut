@@ -12,15 +12,14 @@ using namespace std;
 int total = 0;
 
 int evaluation(Board board){
-    //cout << "evaluated at : " << (board.gainJ1 - board.gainJ2) <<"\n\n";
+    cout << "evaluated at : " << (board.gainJ1 - board.gainJ2) <<"\n\n";
     return board.gainJ1 - board.gainJ2;
 }
 
 std::vector<Board> allBoards(Board board, int joueur){
     //cout << "player : " << joueur;
     std::vector<Board> listBoard;
-    int i = 0;
-    for(i = 0; i < 16; i++){
+    for(int i = 0; i < 16; i++){
         Move current_moveR(i,'R');
         Move current_moveB(i,'B');
 
@@ -43,7 +42,7 @@ std::vector<Board> allBoards(Board board, int joueur){
             total++;
         }
     }
-   // cout << "\n nombre de coups : " << listBoard.size() << "\n";
+    cout << "\n nombre de coups : " << listBoard.size() << "\n";
     //board.printer();
     return listBoard;
 }
@@ -61,10 +60,10 @@ int alphabeta(Board board, int joueur, int profondeur, int alpha, int beta){
          
             v = max(v,alphabeta(b, (joueur+1)%2, (profondeur-1), alpha, beta));
             
-            /* if(v >= beta){
+            if(v >= beta){
                 break;
             }
-            alpha = max(alpha, v); */
+            alpha = max(alpha, v);
         }
         return v;
     }
@@ -74,17 +73,17 @@ int alphabeta(Board board, int joueur, int profondeur, int alpha, int beta){
         for (Board b : boards){
            
             v = min(v, alphabeta(b, (joueur+1)%2, (profondeur-1), alpha, beta));
-           /*  if (beta <= alpha){
+            if (beta <= alpha){
                 break;
             }
-            beta = min(beta, v); */
+            beta = min(beta, v);
         }
         return v;
     }
 }
 
 
-Move playAMove(Board initialBoard, int joueur, int maxDepth){
+Move playAMove(Board initialBoard, int joueur, int maxDepth, bool aiPlaying = false){
     std::map<std::string, int> values;
     for(int i = 0; i < 16; i++){
         int depth = maxDepth;
@@ -93,17 +92,11 @@ Move playAMove(Board initialBoard, int joueur, int maxDepth){
         Move current_moveB(i,'B');
 
         if(is_a_move_legal(initialBoard, current_moveR, joueur)){
-            Board x;
-            int endingPosition =  execute_a_move(x,current_moveR, joueur);
-            x = capture(x, endingPosition, joueur);
-            int val = alphabeta(x, (joueur), depth, INFINITY, -INFINITY);
+            int val = alphabeta(initialBoard, (joueur), depth, INFINITY, -INFINITY);
             values.insert(std::make_pair(current_moveR.toString(), val));
         }
         if(is_a_move_legal(initialBoard, current_moveB, joueur)){
-            Board x;
-            int endingPosition =  execute_a_move(x,current_moveB, joueur);
-            x = capture(x, endingPosition, joueur);
-            int val = alphabeta(x,  (joueur), depth, INFINITY, -INFINITY);
+            int val = alphabeta(initialBoard,  (joueur), depth, INFINITY, -INFINITY);
             values.insert(std::make_pair(current_moveB.toString(), val));
         }
     }
