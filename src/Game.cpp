@@ -2,7 +2,7 @@
 #include "MinMax.cpp"
 
 const int WE_ARE_PLAYER = 0; //Définit quel joueur on est dans la game (0 ou 1);
-const int PROFONDEUR = 4;
+const int PROFONDEUR = 6;
 
 
 void print_turn(int currentPlayer){
