@@ -23,20 +23,18 @@ bool compareM(Move a, Move b){
 
 std::vector<Move> allMoves(Board board, int joueur){
     std::vector<Move> listMoves;
-    //TODO OPTIMISATION PASSER PAR 1 TROU SUR 2 
-    for(int i = joueur; i < 16; i+=2){
+    //printf("Current player in all moves : %d\n", joueur);
+    for(int i = 0; i < 16; i++){
         Move current_moveR(i,'R');
         Move current_moveB(i,'B');
         if(is_a_move_legal(board, current_moveR, joueur)){
             listMoves.push_back(current_moveR);
-
         }
-        
         if(is_a_move_legal(board, current_moveB, joueur)){
             listMoves.push_back(current_moveB);
-
         }
     }
+
     TOTAL_NUMBERS_OF_POSITIONS+= listMoves.size();
     return  listMoves;
 }

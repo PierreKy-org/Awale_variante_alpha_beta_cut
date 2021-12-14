@@ -2,7 +2,7 @@
 #include "Minmax.cpp"
 
 const int WE_ARE_PLAYER = 0; //Définit quel joueur on est dans la game (0 ou 1);
-const int PROFONDEUR = 6;
+const int PROFONDEUR = 5;
 
 
 void print_turn(int currentPlayer){
@@ -35,11 +35,17 @@ int main(){
             printf("Calcul en cours ...\n");
             Move ourMove = valeurMinMax(board,0,0,PROFONDEUR, Move(99,'Z'));
             printf("On joue le coup : %d%c\n", ourMove.starting_hole, ourMove.color);
-            ourMove.starting_hole--;
-            endingPosition = execute_a_move(board, ourMove, currentPlayer);
-            board = capture(board, endingPosition, currentPlayer);
-            printf("... Nombre de positions calculées %d\n",TOTAL_NUMBERS_OF_POSITIONS);
-            TOTAL_NUMBERS_OF_POSITIONS = 0;
+            //ourMove.starting_hole--;
+            if(is_a_move_legal(board, ourMove, currentPlayer)){
+                endingPosition = execute_a_move(board, ourMove, currentPlayer);
+                board = capture(board, endingPosition, currentPlayer);
+                printf("... Nombre de positions calculées %d\n",TOTAL_NUMBERS_OF_POSITIONS);
+                TOTAL_NUMBERS_OF_POSITIONS = 0;
+
+            } else {
+                illegal_flag = true;
+            }
+
         } else {
 
             //On joue le coup de l'adversaire

@@ -6,7 +6,8 @@ class Move {
         char color;
         int gain = 0;
         //Constructeur
-        Move(int , char );
+        Move(int , char);
+        Move(int , char, int);
         void printer();
         int getGain();
         void setGain(int);
@@ -18,6 +19,11 @@ class Move {
 Move::Move(int start, char col) {
     starting_hole = start;
     color = col;
+}
+Move::Move(int start, char col, int gains) {
+    starting_hole = start;
+    color = col;
+    gain = gains;
 }
 
 
