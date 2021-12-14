@@ -12,7 +12,7 @@ using namespace std;
 int total = 0;
 
 int evaluation(Board board){
-    cout << "evaluated at : " << (board.gainJ1 - board.gainJ2) <<"\n\n";
+    //cout << "evaluated at : " << (board.gainJ1 - board.gainJ2) <<"\n\n";
     return board.gainJ1 - board.gainJ2;
 }
 
@@ -61,10 +61,10 @@ int alphabeta(Board board, int joueur, int profondeur, int alpha, int beta){
          
             v = max(v,alphabeta(b, (joueur+1)%2, (profondeur-1), alpha, beta));
             
-            if(v >= beta){
+            /* if(v >= beta){
                 break;
             }
-            alpha = max(alpha, v);
+            alpha = max(alpha, v); */
         }
         return v;
     }
@@ -74,10 +74,10 @@ int alphabeta(Board board, int joueur, int profondeur, int alpha, int beta){
         for (Board b : boards){
            
             v = min(v, alphabeta(b, (joueur+1)%2, (profondeur-1), alpha, beta));
-            if (beta <= alpha){
+           /*  if (beta <= alpha){
                 break;
             }
-            beta = min(beta, v);
+            beta = min(beta, v); */
         }
         return v;
     }
@@ -93,11 +93,17 @@ Move playAMove(Board initialBoard, int joueur, int maxDepth){
         Move current_moveB(i,'B');
 
         if(is_a_move_legal(initialBoard, current_moveR, joueur)){
-            int val = alphabeta(initialBoard, (joueur), depth, INFINITY, -INFINITY);
+            Board x;
+            int endingPosition =  execute_a_move(x,current_moveR, joueur);
+            x = capture(x, endingPosition, joueur);
+            int val = alphabeta(x, (joueur), depth, INFINITY, -INFINITY);
             values.insert(std::make_pair(current_moveR.toString(), val));
         }
         if(is_a_move_legal(initialBoard, current_moveB, joueur)){
-            int val = alphabeta(initialBoard,  (joueur), depth, INFINITY, -INFINITY);
+            Board x;
+            int endingPosition =  execute_a_move(x,current_moveB, joueur);
+            x = capture(x, endingPosition, joueur);
+            int val = alphabeta(x,  (joueur), depth, INFINITY, -INFINITY);
             values.insert(std::make_pair(current_moveB.toString(), val));
         }
     }

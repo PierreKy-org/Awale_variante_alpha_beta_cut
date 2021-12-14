@@ -1,8 +1,8 @@
 #include <sstream>
 #include "WINAMAX.cpp"
 
-const int WE_ARE_PLAYER = 0; //Définit quel joueur on est dans la game (0 ou 1);
-const int PROFONDEUR = 5;
+const int WE_ARE_PLAYER = 1; //Définit quel joueur on est dans la game (0 ou 1);
+const int PROFONDEUR = 4;
 
 
 void print_turn(int currentPlayer){
@@ -34,7 +34,7 @@ int main(){
         if (currentPlayer == WE_ARE_PLAYER){
             printf("Calcul en cours ...\n");
             Move ourMove = playAMove(board, currentPlayer, PROFONDEUR);
-            printf("On joue le coup : %d%c\n", ourMove.starting_hole, ourMove.color);
+            printf("On joue le coup : %d%c\n", ourMove.starting_hole+1, ourMove.color);
             //ourMove.starting_hole--;
             if(is_a_move_legal(board, ourMove, currentPlayer)){
                 endingPosition = execute_a_move(board, ourMove, currentPlayer);
