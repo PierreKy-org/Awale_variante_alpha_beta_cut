@@ -61,7 +61,7 @@ bool testEndGame05(){
 }
 
 /**
- * test du starving
+ * test du starving joueur 2 
  */ 
 bool testEndGame06(){
     Board board;
@@ -102,8 +102,16 @@ bool testEndGame06(){
     board.cases[14].graine_rouge = 0;
     board.cases[15].graine_bleu = 0;
     board.cases[15].graine_rouge = 0;
-
-    return is_it_the_end_of_the_game(board);
+    if(is_it_the_end_of_the_game(board)){
+        int result = board.is_a_player_starving();
+        if(result == 1){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    return false;
 }
 
 
@@ -154,6 +162,59 @@ bool testEndGame07(){
     return !(is_it_the_end_of_the_game(board));
 }
 
+/**
+ * test du starving joueur 1
+ */ 
+bool testEndGame08(){
+    Board board;
+    board.gainJ1 = board.gainJ2 = 0;
+    //Les gains sont à 0 pour ne pas interférer
+
+    //Le joueur 1 (case[0]) possède plein de graines
+    //Le joueur 2 n'en as aucunes
+    board.cases[0].graine_bleu = 0;
+    board.cases[0].graine_rouge = 0;
+    board.cases[1].graine_bleu = 2;
+    board.cases[1].graine_rouge = 2;
+    board.cases[2].graine_bleu = 0;
+    board.cases[2].graine_rouge = 0;
+    board.cases[3].graine_bleu = 0;
+    board.cases[3].graine_rouge = 0;
+    board.cases[4].graine_bleu = 0;
+    board.cases[4].graine_rouge = 0;
+    board.cases[5].graine_bleu = 0;
+    board.cases[5].graine_rouge = 0;
+    board.cases[6].graine_bleu = 0;
+    board.cases[6].graine_rouge = 0;
+    board.cases[7].graine_bleu = 0;
+    board.cases[7].graine_rouge = 0;
+    board.cases[8].graine_bleu = 0;
+    board.cases[8].graine_rouge = 0;
+    board.cases[9].graine_bleu = 0;
+    board.cases[9].graine_rouge = 0;
+    board.cases[10].graine_bleu = 0;
+    board.cases[10].graine_rouge = 0;
+    board.cases[11].graine_bleu = 0;
+    board.cases[11].graine_rouge = 0;
+    board.cases[12].graine_bleu = 0;
+    board.cases[12].graine_rouge = 0;
+    board.cases[13].graine_bleu = 0;
+    board.cases[13].graine_rouge = 0;
+    board.cases[14].graine_bleu = 0;
+    board.cases[14].graine_rouge = 0;
+    board.cases[15].graine_bleu = 0;
+    board.cases[15].graine_rouge = 0;
+    if(is_it_the_end_of_the_game(board)){
+        int result = board.is_a_player_starving();
+        if(result == 1){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+    return false;
+}
 int testing (char* functionName, bool (*function)(), bool quiet=true){
     if (!quiet) {printf("\nTesting %s : \n", functionName);}
     if (function()){
@@ -220,11 +281,12 @@ int main(){
     successes += testing("testEndgame05", &testEndGame05);
     successes += testing("testEndgame06", &testEndGame06);
     successes += testing("testEndgame07", &testEndGame07);
+    successes += testing("testEndgame08", &testEndGame08);
 
     successes += testing("testWinner01", &testWinner01);
     successes += testing("testWinner02", &testWinner02);
     successes += testing("testWinner03", &testWinner03);
 
-    printf("\n\n=====> [%d/10] Test Passed\n", successes);
+    printf("\n\n=====> [%d/11] Test Passed\n", successes);
     printf("PENSER A RAJOUTER LES TESTS MANQUANTS APRES L'IMPLEMENTATION DE LA CAPTURE\n\n");
 }

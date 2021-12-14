@@ -36,9 +36,10 @@ int main(){
             Move ourMove = valeurMinMax(board,0,0,PROFONDEUR, Move(99,'Z'));
             printf("On joue le coup : %d%c\n", ourMove.starting_hole, ourMove.color);
             ourMove.starting_hole--;
-            int endingPosition = execute_a_move(board, ourMove, currentPlayer);
+            endingPosition = execute_a_move(board, ourMove, currentPlayer);
             board = capture(board, endingPosition, currentPlayer);
-
+            printf("... Nombre de positions calculées %d\n",TOTAL_NUMBERS_OF_POSITIONS);
+            TOTAL_NUMBERS_OF_POSITIONS = 0;
         } else {
 
             //On joue le coup de l'adversaire

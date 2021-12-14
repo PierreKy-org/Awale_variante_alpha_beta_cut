@@ -14,6 +14,9 @@ testAll : buildSowingTest buildWinningTest buildCapturingTest
 	@echo "----------------------------------Launching the capturing tests...----------------------------------"
 	@./builds/tests/capturing
 
+	@echo "----------------------------------Launching the copy tests...----------------------------------"
+	@./builds/tests/copy
+
 testSowing : buildSowingTest
 	@echo "----------------------------------Launching the sowing tests...----------------------------------"
 	@./builds/tests/sowing
@@ -29,6 +32,10 @@ testCapturing : buildCapturingTest
 testMinmax : buildMinmaxTest
 	@echo "----------------------------------Launching the minmax tests...----------------------------------"
 	@./builds/tests/minmax 
+
+testCopy : buildCopy
+	@echo "----------------------------------Launching the minmax tests...----------------------------------"
+	@./builds/tests/copy 
 
 
 build : 
@@ -48,5 +55,9 @@ buildCapturingTest :
 
 buildMinmaxTest : 
 	@g++ tests/MinmaxTest.cpp -o builds/tests/minmax
+
+
+buildCopy : 
+	@g++ tests/CopyBoardTest.cpp -o builds/tests/copy
 
 #TODO : Definir un build optimisé
