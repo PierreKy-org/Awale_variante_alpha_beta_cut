@@ -2,7 +2,7 @@
 #include "MinMax.cpp"
 
 const int WE_ARE_PLAYER = 0; //Définit quel joueur on est dans la game (0 ou 1);
-const int PROFONDEUR = 4;
+const int PROFONDEUR = 6;
 
 
 void print_turn(int currentPlayer){
@@ -60,21 +60,8 @@ int main(){
                 std::cout << "Coup illegal\n" << std::endl;
                 illegal_flag = true;
             }
-
-
-            //On joue le coup de l'adversaire
-            Move theirMove = parse_a_move();
-
-            if (is_a_move_legal(board, theirMove, currentPlayer)){
-                endingPosition = execute_a_move(board, theirMove, currentPlayer);
-                board = capture(board, endingPosition, currentPlayer);
-
-            } else {
-                printf("Coup illegal !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n");
-                illegal_flag = true;
-                    
-            }
         }
+
         //Si le coup joué était illegal, on n'actualise pas la game
         if (!illegal_flag){
             printf("Etat du board après le coup\n");

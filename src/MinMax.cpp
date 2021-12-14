@@ -79,7 +79,7 @@ int alphabeta(Board board, int joueur, int profondeur, int alpha, int beta){
         for (Board b : boards){
            
             v = min(v, alphabeta(b, (joueur+1)%2, (profondeur-1), alpha, beta));
-            if (beta <= alpha){
+            if (v <= alpha){
                 break;
             }
             beta = min(beta, v);
