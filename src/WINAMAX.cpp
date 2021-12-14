@@ -12,7 +12,7 @@ using namespace std;
 int total = 0;
 
 int evaluation(Board board){
-    cout << "evaluated at : " << (board.gainJ1 - board.gainJ2) << "\n\n";
+    cout << "evaluated at : " << (board.gainJ1 - board.gainJ2) <<"\n\n";
     return board.gainJ1 - board.gainJ2;
 }
 
@@ -43,13 +43,13 @@ std::vector<Board> allBoards(Board board, int joueur){
             total++;
         }
     }
-    cout << "\n nombre de coups : " << listBoard.size() << "\n";
+   // cout << "\n nombre de coups : " << listBoard.size() << "\n";
     //board.printer();
     return listBoard;
 }
 
 int alphabeta(Board board, int joueur, int profondeur, int alpha, int beta){
-    cout<< "profondeur = " << profondeur;
+   // cout<< "profondeur = " << profondeur;
     if (profondeur == 0 || is_it_the_end_of_the_game(board)){
         return evaluation(board);
     }
@@ -58,12 +58,10 @@ int alphabeta(Board board, int joueur, int profondeur, int alpha, int beta){
         int v = -INFINITY;
         std::vector<Board> boards = allBoards(board, joueur);
         for (Board b : boards){
-            Board newBoard;
-            newBoard.copy(b);
-            int alphabetaVal =  alphabeta(newBoard, (joueur+1)%2, (profondeur-1), alpha, beta);
-            v = max(v,alphabetaVal);
-
-            if (v >= beta){
+         
+            v = max(v,alphabeta(b, (joueur+1)%2, (profondeur-1), alpha, beta));
+            
+            if(v >= beta){
                 break;
             }
             alpha = max(alpha, v);
@@ -74,11 +72,9 @@ int alphabeta(Board board, int joueur, int profondeur, int alpha, int beta){
         int v = INFINITY;
         std::vector<Board> boards = allBoards(board, joueur);
         for (Board b : boards){
-            Board newBoard;
-            newBoard.copy(b);
-            int alphabetaVal =  alphabeta(newBoard, (joueur+1)%2, (profondeur-1), alpha, beta);
-            v = min(v, alphabetaVal);
-            if (v <= alpha){
+           
+            v = min(v, alphabeta(b, (joueur+1)%2, (profondeur-1), alpha, beta));
+            if (beta <= alpha){
                 break;
             }
             beta = min(beta, v);
@@ -111,25 +107,15 @@ Move playAMove(Board initialBoard, int joueur, int maxDepth){
     printf("\naffichage des valeurs de chaque coups");
     for(const auto& elem : values) {
         std::cout << elem.first << " || " << elem.second << "\n";
-    }
-
-    for (auto const& x : values)
-    {
-        if (x.second > max) {
-            max = x.second;
-            maxStr = x.first;
+        if (elem.second > max) {
+            max = elem.second;
+            maxStr = elem.first;
         }
     }
-    cout << "\nMAXIMUM STR : " <<maxStr;
+
+ //   cout << "\nMAXIMUM STR : " <<maxStr;
     Move res = parse_a_move(maxStr);
     res.starting_hole++;
     return res;
 }
 
-int main(){
-    Board board;
-
-    playAMove(board, 0, 18).printer();
-    printf("%d", total);
-
-}

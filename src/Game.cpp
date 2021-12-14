@@ -1,5 +1,5 @@
 #include <sstream>
-#include "justwork.cpp"
+#include "WINAMAX.cpp"
 
 const int WE_ARE_PLAYER = 0; //Définit quel joueur on est dans la game (0 ou 1);
 const int PROFONDEUR = 5;
@@ -39,10 +39,11 @@ int main(){
             if(is_a_move_legal(board, ourMove, currentPlayer)){
                 endingPosition = execute_a_move(board, ourMove, currentPlayer);
                 board = capture(board, endingPosition, currentPlayer);
-                printf("... Nombre de positions calculées %d\n",TOTAL_NUMBERS_OF_POSITIONS);
-                TOTAL_NUMBERS_OF_POSITIONS = 0;
+                printf("... Nombre de positions calculées %d\n",total);
+                total = 0;
 
             } else {
+                std::cout << "Coup illegal\n" << std::endl;
                 illegal_flag = true;
             }
 
