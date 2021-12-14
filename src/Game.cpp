@@ -29,16 +29,11 @@ int main(){
             board.ingame = false;
             break;
         }
-        /*
-        On est le joueur courrant
-        Quand c'est notre tour on ne vérifie pas que le coup soit legal 
-        (IL LE SERA FORCEMENT)
-        */
         if (currentPlayer == WE_ARE_PLAYER){
             printf("Calcul en cours ...\n");
             Move ourMove = playAMove(board, currentPlayer, PROFONDEUR);
             printf("On joue le coup : %d%c\n", ourMove.starting_hole+1, ourMove.color);
-            //ourMove.starting_hole--;
+
             if(is_a_move_legal(board, ourMove, currentPlayer)){
                 endingPosition = execute_a_move(board, ourMove, currentPlayer);
                 board = capture(board, endingPosition, currentPlayer);
@@ -58,6 +53,7 @@ int main(){
             if (is_a_move_legal(board, theirMove, currentPlayer)){
                 endingPosition = execute_a_move(board, theirMove, currentPlayer);
                 board = capture(board, endingPosition, currentPlayer);
+
             } else {
                 printf("Coup illegal !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n");
                 illegal_flag = true;

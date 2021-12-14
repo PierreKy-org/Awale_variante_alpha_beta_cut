@@ -14,7 +14,6 @@ class Board {
         bool ingame;
 
         //fonctions
-        int is_a_player_starving();
         bool currentPlayerIsStarving(int);
         void printer();
         void copy(Board b);
@@ -47,34 +46,6 @@ void Board::printer(){
     std::cout << "]" <<std::endl;
 }
 
-int Board::is_a_player_starving(){
-    int j1_starving = 0;
-    int j2_starving = 0;
-    int grainesDeLaCase;
-
-    for(int i=0; i<16; i++){
-        if (j1_starving > 0 && j2_starving > 0){
-            //Les deux joueurs ont des graines, aucun ne starve
-            return -1;
-        }
-        grainesDeLaCase = cases[i].graine_bleu + cases[i].graine_rouge;
-        //printf("graines : %d\n",grainesDeLaCase);
-        if(i%2 == 0){
-            j1_starving = j1_starving + grainesDeLaCase;
-        }else{
-            j2_starving = j2_starving + grainesDeLaCase;
-        }
-    }
-
-    //Un player starve
-    if(j1_starving == 0){
-        return 0;
-
-    }
-    else{
-        return 1;
-    }
-}
 
 bool Board::currentPlayerIsStarving(int currentPlayer){
     int sommeGraines=0;
