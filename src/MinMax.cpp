@@ -11,6 +11,7 @@
 using namespace std;
 int total = 0;
 int player;
+
 int evaluation(Board board){
     //cout << "evaluated at : " << (board.gainJ1 - board.gainJ2) <<"\n\n";
     if(player == 0){
