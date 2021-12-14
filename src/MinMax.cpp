@@ -10,10 +10,14 @@
 
 using namespace std;
 int total = 0;
-
+int player;
 int evaluation(Board board){
     //cout << "evaluated at : " << (board.gainJ1 - board.gainJ2) <<"\n\n";
-    return board.gainJ1 - board.gainJ2;
+    if(player == 0){
+        return board.gainJ1 - board.gainJ2;
+    } else {
+        return board.gainJ2 - board.gainJ1;
+    }
 }
 
 std::vector<Board> allBoards(Board board, int joueur){
@@ -86,6 +90,7 @@ int alphabeta(Board board, int joueur, int profondeur, int alpha, int beta){
 
 Move playAMove(Board initialBoard, int joueur, int maxDepth){
     std::map<std::string, int> values;
+    player = joueur;
     for(int i = 0; i < 16; i++){
         int depth = maxDepth;
 
