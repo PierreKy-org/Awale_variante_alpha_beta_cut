@@ -129,7 +129,7 @@ Move playAMove(Board initialBoard, int joueur, int maxDepth){
         printf("\naffichage des valeurs de chaque coups");
         for(const auto& elem : values) {
             std::cout << elem.first << " || " << elem.second << "\n";
-            if (elem.second > min) {
+            if (elem.second < min) {
                 min = elem.second;
                 minStr = elem.first;
             }
