@@ -50,7 +50,7 @@ std::vector<Board> allBoards(Board board, int joueur){
 
 int alphabeta(Board board, int joueur, int profondeur, int alpha, int beta){
    // cout<< "profondeur = " << profondeur;
-    if (profondeur == 0 || is_it_the_end_of_the_game(board)){
+    if (profondeur == 0 || is_it_the_end_of_the_game(board) || board.currentPlayerIsStarving(joueur)){
         return evaluation(board);
     }
 

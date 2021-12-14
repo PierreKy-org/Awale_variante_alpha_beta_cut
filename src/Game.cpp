@@ -24,8 +24,11 @@ int main(){
 
     while (board.ingame){
         illegal_flag = false; //On reset le flag pour pouvoir essayer un autre coup
-        print_turn(currentPlayer);
-
+        print_turn(currentPlayer);  
+        if (board.currentPlayerIsStarving(currentPlayer)){
+            board.ingame = false;
+            break;
+        }
         /*
         On est le joueur courrant
         Quand c'est notre tour on ne vérifie pas que le coup soit legal 
