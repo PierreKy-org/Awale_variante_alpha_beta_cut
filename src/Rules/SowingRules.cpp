@@ -55,8 +55,6 @@ bool is_a_move_legal(Board board, Move move, int joueur){
 
     //Vérifie que la case contienne des graines
     if (move.color == 'B'){
-        //La ligne juste en dessous fait des segfault, elle est pas nécessaire mais je la garde pour la posterité.
-        //printf("number of graines : %s", board.cases[startingHole].graine_bleu);
         return (board.cases[startingHole].graine_bleu > 0 );
     }else{
         return (board.cases[startingHole].graine_rouge > 0);

@@ -37,8 +37,8 @@ void Board::printer(){
     int cpt=1;
     for(int i = 0; i < 16; i++){
 
-        std::cout << cases[i].toString() << ", ";
-        if (cpt%4==0){
+        std::cout << cases[i].toString(i+1) << ", ";
+        if (cpt%8==0){
             std::cout << "\n";
         }
         cpt++;
