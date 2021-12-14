@@ -35,10 +35,6 @@ bool is_it_the_end_of_the_game(Board board){
         return true;
     }
 
-    //Un des deux joueurs est mort de faim
-    if (board.is_a_player_starving() >= 0){
-        return true;
-    }
     return false;
 }
 

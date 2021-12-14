@@ -1,8 +1,8 @@
 #include <sstream>
-#include "Minmax.cpp"
+#include "MinMax.cpp"
 
 const int WE_ARE_PLAYER = 0; //Définit quel joueur on est dans la game (0 ou 1);
-const int PROFONDEUR = 6;
+const int PROFONDEUR = 4;
 
 
 void print_turn(int currentPlayer){
@@ -24,8 +24,11 @@ int main(){
 
     while (board.ingame){
         illegal_flag = false; //On reset le flag pour pouvoir essayer un autre coup
-        print_turn(currentPlayer);
-
+        print_turn(currentPlayer);  
+        if (board.currentPlayerIsStarving(currentPlayer)){
+            board.ingame = false;
+            break;
+        }
         /*
         On est le joueur courrant
         Quand c'est notre tour on ne vérifie pas que le coup soit legal 
@@ -33,13 +36,20 @@ int main(){
         */
         if (currentPlayer == WE_ARE_PLAYER){
             printf("Calcul en cours ...\n");
-            Move ourMove = valeurMinMax(board,0,0,PROFONDEUR, Move(99,'Z'));
-            printf("On joue le coup : %d%c\n", ourMove.starting_hole, ourMove.color);
-            ourMove.starting_hole--;
-            endingPosition = execute_a_move(board, ourMove, currentPlayer);
-            board = capture(board, endingPosition, currentPlayer);
-            printf("... Nombre de positions calculées %d\n",TOTAL_NUMBERS_OF_POSITIONS);
-            TOTAL_NUMBERS_OF_POSITIONS = 0;
+            Move ourMove = playAMove(board, currentPlayer, PROFONDEUR);
+            printf("On joue le coup : %d%c\n", ourMove.starting_hole+1, ourMove.color);
+            //ourMove.starting_hole--;
+            if(is_a_move_legal(board, ourMove, currentPlayer)){
+                endingPosition = execute_a_move(board, ourMove, currentPlayer);
+                board = capture(board, endingPosition, currentPlayer);
+                printf("... Nombre de positions calculées %d\n",total);
+                total = 0;
+
+            } else {
+                std::cout << "Coup illegal\n" << std::endl;
+                illegal_flag = true;
+            }
+
         } else {
 
             //On joue le coup de l'adversaire
@@ -63,6 +73,5 @@ int main(){
             board.ingame = !(is_it_the_end_of_the_game(board));
         }
     }
-
     printf("Fin de la partie");
 }

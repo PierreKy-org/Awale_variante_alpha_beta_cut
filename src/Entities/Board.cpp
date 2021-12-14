@@ -15,6 +15,7 @@ class Board {
 
         //fonctions
         int is_a_player_starving();
+        bool currentPlayerIsStarving(int);
         void printer();
         void copy(Board b);
 };
@@ -73,6 +74,18 @@ int Board::is_a_player_starving(){
     else{
         return 1;
     }
+}
+
+bool Board::currentPlayerIsStarving(int currentPlayer){
+    int sommeGraines=0;
+
+    for(int i = 0; i<16; i++){
+        if (i%2 == currentPlayer){
+            sommeGraines += cases[i].graine_bleu + cases[i].graine_rouge;
+            
+        }
+    }
+    return sommeGraines == 0;
 }
 
 //deep copy of board
