@@ -103,15 +103,14 @@ bool testEndGame06(){
     board.cases[15].graine_bleu = 0;
     board.cases[15].graine_rouge = 0;
     if(is_it_the_end_of_the_game(board)){
-        int result = board.is_a_player_starving();
-        if(result == 1){
-            return true;
-        }
-        else{
-            return false;
-        }
+        return false;
     }
-    return false;
+    if(board.currentPlayerIsStarving(1)){
+        return true;
+    }
+    if(board.currentPlayerIsStarving(0)){
+        return false;
+    }
 }
 
 
@@ -205,16 +204,16 @@ bool testEndGame08(){
     board.cases[15].graine_bleu = 0;
     board.cases[15].graine_rouge = 0;
     if(is_it_the_end_of_the_game(board)){
-        int result = board.is_a_player_starving();
-        if(result == 1){
-            return false;
-        }
-        else{
-            return true;
-        }
+        return false;
     }
-    return false;
+    if(board.currentPlayerIsStarving(1)){
+        return false;
+    }
+    if(board.currentPlayerIsStarving(0)){
+        return true;
+    }
 }
+
 int testing (char* functionName, bool (*function)(), bool quiet=false){
     if (!quiet) {printf("\nTesting %s : \n", functionName);}
     if (function()){
