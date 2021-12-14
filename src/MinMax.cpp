@@ -108,20 +108,37 @@ Move playAMove(Board initialBoard, int joueur, int maxDepth){
         }
     }
 
-    int max = -INFINITY;
-    string maxStr;
-    printf("\naffichage des valeurs de chaque coups");
-    for(const auto& elem : values) {
-        std::cout << elem.first << " || " << elem.second << "\n";
-        if (elem.second > max) {
-            max = elem.second;
-            maxStr = elem.first;
+    if (joueur == 0){
+        int max = -INFINITY;
+        string maxStr;
+        printf("\naffichage des valeurs de chaque coups");
+        for(const auto& elem : values) {
+            std::cout << elem.first << " || " << elem.second << "\n";
+            if (elem.second > max) {
+                max = elem.second;
+                maxStr = elem.first;
+            }
         }
+        Move res = parse_a_move(maxStr);
+        res.starting_hole++;
+        return res;
+
+    } else {
+        int min = INFINITY;
+        string minStr;
+        printf("\naffichage des valeurs de chaque coups");
+        for(const auto& elem : values) {
+            std::cout << elem.first << " || " << elem.second << "\n";
+            if (elem.second > min) {
+                min = elem.second;
+                minStr = elem.first;
+            }
+        }
+        Move res = parse_a_move(minStr);
+        res.starting_hole++;
+        return res;
+
     }
 
- //   cout << "\nMAXIMUM STR : " <<maxStr;
-    Move res = parse_a_move(maxStr);
-    res.starting_hole++;
-    return res;
 }
 

@@ -1,7 +1,7 @@
 #include <sstream>
-#include "WINAMAX.cpp"
+#include "MinMax.cpp"
 
-const int WE_ARE_PLAYER = 1; //Définit quel joueur on est dans la game (0 ou 1);
+const int WE_ARE_PLAYER = 0; //Définit quel joueur on est dans la game (0 ou 1);
 const int PROFONDEUR = 4;
 
 
