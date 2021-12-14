@@ -15,6 +15,7 @@ class Board {
 
         //fonctions
         bool currentPlayerIsStarving(int);
+        int grainesDuJoueur(int);
         void printer();
         void copy(Board b);
 };
@@ -28,6 +29,8 @@ Board::Board() {
     gainJ2 = 0;
     ingame = true;
 }
+
+
 
 /**
  * Affiche le board
@@ -68,4 +71,15 @@ void Board::copy(Board b){
     for (int i = 0; i < 16; i++){
         this->cases[i] = b.cases[i];
     }
+}
+
+int Board::grainesDuJoueur(int currentPlayer){
+    int sommeGraines=0;
+
+    for(int i = 0; i<16; i++){
+        if (i%2 == currentPlayer){
+            sommeGraines += cases[i].graine_bleu + cases[i].graine_rouge;
+        }
+    }
+    return sommeGraines;
 }

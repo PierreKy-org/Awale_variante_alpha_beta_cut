@@ -2,7 +2,7 @@
 #include "MinMax.cpp"
 
 const int WE_ARE_PLAYER = 0; //Définit quel joueur on est dans la game (0 ou 1);
-const int PROFONDEUR = 6;
+const int PROFONDEUR = 4;
 
 
 void print_turn(int currentPlayer){
@@ -30,6 +30,7 @@ int main(){
             break;
         }
         if (currentPlayer == WE_ARE_PLAYER){
+            bot1 = true;
             printf("Calcul en cours ...\n");
             Move ourMove = playAMove(board, currentPlayer, PROFONDEUR);
             printf("On joue le coup : %d%c\n", ourMove.starting_hole+1, ourMove.color);
@@ -46,6 +47,7 @@ int main(){
             }
 
         } else {
+            bot1 = false;
             printf("Calcul en cours ...\n");
             Move ourMove = playAMove(board, currentPlayer, PROFONDEUR);
             printf("On joue le coup : %d%c\n", ourMove.starting_hole+1, ourMove.color);
