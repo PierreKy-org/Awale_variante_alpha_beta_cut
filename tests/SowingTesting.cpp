@@ -5,13 +5,13 @@
 //Un seul digit avant le B
 bool testMoveParser01(){
     Move move = parse_a_move("3B");
-    return (move.starting_hole == 3
+    return (move.starting_hole == 2
         && move.color == 'B');
 }
 //Plusieurs digits
 bool testMoveParser02(){
     Move move = parse_a_move("9999B");
-    return (move.starting_hole == 9999
+    return (move.starting_hole == 9998
         && move.color == 'B');
 }
 //Couleur inconnue

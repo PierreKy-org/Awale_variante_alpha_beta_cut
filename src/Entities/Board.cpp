@@ -11,13 +11,11 @@ class Board {
         Trou *cases;
         short gainJ1;
         short gainJ2;
-        bool tour;
         bool ingame;
 
         //fonctions
         int is_a_player_starving();
         void printer();
-        Move* allMoves();
         void copy(Board b);
 };
 
@@ -28,7 +26,6 @@ Board::Board() {
     cases = new Trou[16];
     gainJ1 = 0;
     gainJ2 = 0;
-    tour = true;
     ingame = true;
 }
 
@@ -57,7 +54,7 @@ int Board::is_a_player_starving(){
     for(int i=0; i<16; i++){
         if (j1_starving > 0 && j2_starving > 0){
             //Les deux joueurs ont des graines, aucun ne starve
-            return false;
+            return -1;
         }
         grainesDeLaCase = cases[i].graine_bleu + cases[i].graine_rouge;
         //printf("graines : %d\n",grainesDeLaCase);
@@ -69,16 +66,19 @@ int Board::is_a_player_starving(){
     }
 
     //Un player starve
-    return true;
+    if(j1_starving == 0){
+        return 0;
 
-    return (j1_starving == 0 || j2_starving == 0);
+    }
+    else{
+        return 1;
+    }
 }
 
 //deep copy of board
 void Board::copy(Board b){
     
     this->ingame = b.ingame;
-    this->tour = b.tour;
     this->gainJ2 = b.gainJ2;
     this->gainJ1 = b.gainJ1;
     for (int i = 0; i < 16; i++){

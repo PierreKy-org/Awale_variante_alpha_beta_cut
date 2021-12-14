@@ -46,14 +46,9 @@ bool capturingTest01(){
     board.cases[15].graine_rouge = 0;
 
 
-    Move x = valeurMinMax(board, 0,0,1,Move(19, 'Y'));
-    x.printer();
-    if(x.color == 'R' && x.starting_hole == 8){
-        return true;
-    }
-    else{
-        return false;
-    }
+    int x = valeurMinMax(board, 0,0,1);
+    std::cout << "x: " << x << std::endl;
+    return true;
 }
 
 int testing (char* functionName, bool (*function)(), bool quiet=true){
