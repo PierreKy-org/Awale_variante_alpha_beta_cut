@@ -86,7 +86,6 @@ int sowing_red(Board* board, Move move, int joueur){
 
         compteur++;
     }
-    board->printer();
     return caseActuelle; //renvoit la case actuelle pour savoir d'où on repart lors de la capture
 }
 /**
