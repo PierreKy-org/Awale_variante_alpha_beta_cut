@@ -1,6 +1,9 @@
 run :	build
 	@./builds/main
 
+auto : buildAuto
+	@./builds/auto
+
 minmax: buildMinmax
 	@./builds/minmax
 
@@ -40,6 +43,9 @@ testCopy : buildCopy
 
 build : 
 	@g++ -O3 src/Game.cpp -o builds/main
+
+buildAuto :
+	@g++  src/AutoGame.cpp -o builds/auto
 
 buildMinmax:
 	@g++ -O3 src/Minmax.cpp -o builds/minmax

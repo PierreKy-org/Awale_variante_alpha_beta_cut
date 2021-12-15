@@ -13,8 +13,8 @@ class Board {
 
         //variables
         std::vector<Trou> cases;
-        short gainJ1;
-        short gainJ2;
+        uint8_t gainJ1;
+        uint8_t gainJ2;
         bool ingame;
 
         //fonctions
