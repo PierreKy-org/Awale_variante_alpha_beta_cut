@@ -30,6 +30,9 @@ int main(){
             break;
         }
         if (currentPlayer == WE_ARE_PLAYER){
+
+            bot = 0;            
+
             printf("Calcul en cours ...\n");
 
             using std::chrono::high_resolution_clock;
@@ -63,6 +66,8 @@ int main(){
             }
 
         } else {
+
+            bot = 1;
 
             printf("Calcul en cours ...\n");
 

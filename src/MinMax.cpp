@@ -11,6 +11,7 @@
 using namespace std;
 int total = 0;
 int player;
+int bot = 0;
 
 int evaluation(Board board){
     //cout << "evaluated at : " << (board.gainJ1 - board.gainJ2) <<"\n\n";
@@ -21,6 +22,14 @@ int evaluation(Board board){
     }
 }
 
+int evaluation2(Board board){
+    //cout << "evaluated at : " << (board.gainJ1 - board.gainJ2) <<"\n\n";
+    if(player == 0){
+        return board.gainJ1 - board.gainJ2;
+    } else {
+        return board.gainJ2 - board.gainJ1;
+    }
+}
 std::vector<Board> allBoards(Board board, int joueur){
     //cout << "player : " << joueur;
     std::vector<Board> listBoard;
@@ -55,7 +64,10 @@ std::vector<Board> allBoards(Board board, int joueur){
 int alphabeta(Board board, int joueur, int profondeur, int alpha, int beta){
    // cout<< "profondeur = " << profondeur;
     if (profondeur == 0 || is_it_the_end_of_the_game(board) || board.currentPlayerIsStarving(joueur)){
-        return evaluation(board);
+        if (bot == 0){
+            return evaluation(board);
+        }
+        return evaluation2(board);
     }
 
     if (joueur == 0){

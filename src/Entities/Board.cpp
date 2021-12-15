@@ -21,6 +21,9 @@ class Board {
         bool currentPlayerIsStarving(int);
         void printer();
         void copy(Board b);
+        int graineRougeJoueur(int);
+        int graineBleuJoueur(int);
+        int grainesJoueur(int);
 };
 
 /**
@@ -65,6 +68,35 @@ bool Board::currentPlayerIsStarving(int currentPlayer){
     return sommeGraines == 0;
 }
 
+int Board::graineRougeJoueur(int currentPlayer){
+    int sommeGraines=0;
+
+    for(int i = 0; i<16; i++){
+        if (i%2 == currentPlayer){
+            sommeGraines += cases[i].graine_rouge;
+            
+        }
+    }
+    return sommeGraines == 0;
+}
+
+int Board::graineBleuJoueur(int currentPlayer){
+    int sommeGraines=0;
+
+    for(int i = 0; i<16; i++){
+        if (i%2 == currentPlayer){
+            sommeGraines += cases[i].graine_bleu;
+            
+        }
+    }
+    return sommeGraines == 0;
+}
+
+int Board::grainesJoueur(int currentPlayer){
+    return graineBleuJoueur(currentPlayer) + graineRougeJoueur(currentPlayer);
+}
+
+
 //deep copy of board
 void Board::copy(Board b){
     
@@ -74,4 +106,5 @@ void Board::copy(Board b){
     for (int i = 0; i < 16; i++){
         this->cases[i] = b.cases[i];
     }
+    
 }
