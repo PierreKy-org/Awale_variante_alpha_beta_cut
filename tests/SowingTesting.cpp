@@ -84,7 +84,7 @@ bool testIllegal03(){
  * Fonction just pour les tests
  * permet de comparer deux tableaux de trous
  */
-bool compareTwoCases(Trou case1[16], Trou case2[16]){
+bool compareTwoCases(std::vector<Trou> case1, std::vector<Trou> case2){
     for (int i=0; i < 16; i++){
         if (!(case1[i].equals(case2[i]))){
             return false;
@@ -102,7 +102,7 @@ bool testAfterMakingMove01(){
     Board comparisonBoard; //Board qui contiendra le résultat attendu (est comparé avec le premier)
     Move move(0, 'R');
 
-    execute_a_move(board, move, joueur);
+    execute_a_move(&board, move, joueur);
 
     comparisonBoard.cases[0].graine_rouge = 0;
     comparisonBoard.cases[1].graine_rouge += 1;
@@ -119,7 +119,7 @@ bool testAfterMakingMove02(){
     Board comparisonBoard; //Board qui contiendra le résultat attendu (est comparé avec le premier)
     Move move(0, 'B');
 
-    execute_a_move(board, move, joueur);
+    execute_a_move(&board, move, joueur);
 
     comparisonBoard.cases[0].graine_bleu = 0;
     comparisonBoard.cases[1].graine_bleu += 1;
@@ -139,7 +139,7 @@ bool testAfterMakingMove03(){
     Board comparisonBoard; //Board qui contiendra le résultat attendu (est comparé avec le premier)
     Move move(0, 'R');
 
-    execute_a_move(board, move, joueur);
+    execute_a_move(&board, move, joueur);
     //board.printer();
 
     comparisonBoard.cases[0].graine_rouge = 0;
@@ -170,7 +170,7 @@ bool testAfterMakingMove04(){
     Board comparisonBoard; //Board qui contiendra le résultat attendu (est comparé avec le premier)
     Move move(0, 'B');
 
-    execute_a_move(board, move, joueur);
+    execute_a_move(&board, move, joueur);
     //board.printer();
 
     comparisonBoard.cases[0].graine_bleu = 0;
@@ -201,7 +201,7 @@ bool testAfterMakingMove05(){
     Board comparisonBoard; //Board qui contiendra le résultat attendu (est comparé avec le premier)
     Move move(0, 'R');
 
-    execute_a_move(board, move, joueur);
+    execute_a_move(&board, move, joueur);
     //board.printer();
 
     comparisonBoard.cases[0].graine_rouge = 0;

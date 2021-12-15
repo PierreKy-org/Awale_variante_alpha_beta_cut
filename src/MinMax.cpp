@@ -32,7 +32,7 @@ std::vector<Board> allBoards(Board board, int joueur){
         if(is_a_move_legal(board, current_moveR, joueur)){
             Board newBoard;
             newBoard.copy(board);
-            int endingPosition =  execute_a_move(newBoard,current_moveR, joueur);
+            int endingPosition =  execute_a_move(&newBoard,current_moveR, joueur);
             newBoard = capture(newBoard, endingPosition, joueur);
             listBoard.push_back(newBoard);
             total++;
@@ -41,7 +41,7 @@ std::vector<Board> allBoards(Board board, int joueur){
         if(is_a_move_legal(board, current_moveB, joueur)){
             Board newBoard;
             newBoard.copy(board);
-            int endingPosition =  execute_a_move(newBoard,current_moveB, joueur);
+            int endingPosition =  execute_a_move(&newBoard,current_moveB, joueur);
             newBoard = capture(newBoard, endingPosition, joueur);
             listBoard.push_back(newBoard);
             total++;
@@ -98,14 +98,14 @@ Move playAMove(Board initialBoard, int joueur, int maxDepth){
 
         if(is_a_move_legal(initialBoard, current_moveR, joueur)){
             Board x;
-            int endingPosition =  execute_a_move(x,current_moveR, joueur);
+            int endingPosition =  execute_a_move(&x,current_moveR, joueur);
             x = capture(x, endingPosition, joueur);
             int val = alphabeta(x, (joueur), depth, -INFINITY, INFINITY);
             values.insert(std::make_pair(current_moveR.toString(), val));
         }
         if(is_a_move_legal(initialBoard, current_moveB, joueur)){
             Board x;
-            int endingPosition =  execute_a_move(x,current_moveB, joueur);
+            int endingPosition =  execute_a_move(&x,current_moveB, joueur);
             x = capture(x, endingPosition, joueur);
             int val = alphabeta(x,  (joueur), depth, -INFINITY, INFINITY);
             values.insert(std::make_pair(current_moveB.toString(), val));

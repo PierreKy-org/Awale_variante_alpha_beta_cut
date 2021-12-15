@@ -56,7 +56,7 @@ int main(){
 
 
             if(is_a_move_legal(board, ourMove, currentPlayer)){
-                endingPosition = execute_a_move(board, ourMove, currentPlayer);
+                endingPosition = execute_a_move(&board, ourMove, currentPlayer);
                 board = capture(board, endingPosition, currentPlayer);
                 printf("... Nombre de positions calculées %d\n",total);
                 total = 0;
@@ -72,7 +72,7 @@ int main(){
             Move theirMove = parse_a_move();
 
             if (is_a_move_legal(board, theirMove, currentPlayer)){
-                endingPosition = execute_a_move(board, theirMove, currentPlayer);
+                endingPosition = execute_a_move(&board, theirMove, currentPlayer);
                 board = capture(board, endingPosition, currentPlayer);
 
             } else {

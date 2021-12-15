@@ -126,11 +126,12 @@ bool testCopy04(){
     board.cases[15].graine_rouge = 0;
     Board b;
     b.copy(board);
-
+    b.printer();
     //Modification de la copie
     Move r = Move(1,'R');
     if(is_a_move_legal(b, r, 1)){
-        int x = execute_a_move(b, r, 1);
+        int x = execute_a_move(&b, r, 1);
+        b.printer();
     }
 
 

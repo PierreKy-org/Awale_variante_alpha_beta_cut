@@ -48,7 +48,7 @@ int Trou::empty_color(char color){
         this->graine_bleu = 0;
         return sum;
     }else {
-        sum = this->graine_bleu;
+        sum = this->graine_rouge;
         this->graine_rouge = 0;
         return sum;
     }

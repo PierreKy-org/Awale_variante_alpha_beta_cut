@@ -5,7 +5,7 @@
  * Fonction just pour les tests
  * permet de comparer deux tableaux de trous
  */
-bool compareTwoCases(Trou case1[16], Trou case2[16]){
+bool compareTwoCases(std::vector<Trou> case1, std::vector<Trou> case2){
     for (int i=0; i < 16; i++){
         if (!(case1[i].equals(case2[i]))){
             return false;
