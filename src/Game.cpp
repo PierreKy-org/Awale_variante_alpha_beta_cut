@@ -27,6 +27,7 @@ int main(){
     board.printer();
 
     while (board.ingame){
+        cout << "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=";
         illegal_flag = false; //On reset le flag pour pouvoir essayer un autre coup
         print_turn(currentPlayer);  
         if (board.currentPlayerIsStarving(currentPlayer)){

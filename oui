@@ -1,0 +1,314 @@
+==================== Début de la partie : 
+Affichage du board : [
+01([1;31mR : 2[0m|[1;34mB : 2[0m), 02([1;31mR : 2[0m|[1;34mB : 2[0m), 03([1;31mR : 2[0m|[1;34mB : 2[0m), 04([1;31mR : 2[0m|[1;34mB : 2[0m), 05([1;31mR : 2[0m|[1;34mB : 2[0m), 06([1;31mR : 2[0m|[1;34mB : 2[0m), 07([1;31mR : 2[0m|[1;34mB : 2[0m), 08([1;31mR : 2[0m|[1;34mB : 2[0m), 
+09([1;31mR : 2[0m|[1;34mB : 2[0m), 10([1;31mR : 2[0m|[1;34mB : 2[0m), 11([1;31mR : 2[0m|[1;34mB : 2[0m), 12([1;31mR : 2[0m|[1;34mB : 2[0m), 13([1;31mR : 2[0m|[1;34mB : 2[0m), 14([1;31mR : 2[0m|[1;34mB : 2[0m), 15([1;31mR : 2[0m|[1;34mB : 2[0m), 16([1;31mR : 2[0m|[1;34mB : 2[0m), 
+]
+---- Au tour du joueur IMPAIR
+Calcul en cours ...
+
+affichage des valeurs de chaque coups0B || 0
+0R || 0
+10B || 0
+10R || 0
+12B || 0
+12R || 0
+14B || 0
+14R || 0
+2B || 0
+2R || 0
+4B || 0
+4R || 0
+6B || 0
+6R || 0
+8B || 0
+8R || 0
+On joue le coup : 1B
+1427ms
+... Nombre de positions calculées 4644717
+
+gainJ1 = 0
+gainJ2 = 0
+Fin de la partie---- Au tour du joueur IMPAIR
+Calcul en cours ...
+
+affichage des valeurs de chaque coups0R || 0
+10B || 0
+10R || 0
+12B || 0
+12R || 0
+14B || 0
+14R || 0
+2B || 0
+2R || 0
+4B || 0
+4R || 0
+6B || 0
+6R || 0
+8B || 0
+8R || 0
+On joue le coup : 1R
+1277ms
+... Nombre de positions calculées 4353485
+
+gainJ1 = 0
+gainJ2 = 0
+Fin de la partie---- Au tour du joueur IMPAIR
+Calcul en cours ...
+
+affichage des valeurs de chaque coups10B || 0
+10R || 0
+12B || 0
+12R || 0
+14B || 0
+14R || 0
+2B || 0
+2R || 0
+4B || 0
+4R || 0
+6B || 0
+6R || 0
+8B || 0
+8R || 0
+On joue le coup : 11B
+1147ms
+... Nombre de positions calculées 3975385
+
+gainJ1 = 0
+gainJ2 = 0
+Fin de la partie---- Au tour du joueur IMPAIR
+Calcul en cours ...
+
+affichage des valeurs de chaque coups10R || 0
+12B || 0
+12R || 0
+14B || 0
+14R || 0
+2B || 0
+2R || 0
+4B || 0
+4R || 0
+6B || 0
+6R || 0
+8B || 0
+8R || 0
+On joue le coup : 11R
+1060ms
+... Nombre de positions calculées 3614926
+
+gainJ1 = 0
+gainJ2 = 0
+Fin de la partie---- Au tour du joueur IMPAIR
+Calcul en cours ...
+
+affichage des valeurs de chaque coups12B || 0
+12R || 0
+14B || 0
+14R || 0
+2B || 0
+2R || 0
+4B || 0
+4R || 0
+6B || 0
+6R || 0
+8B || 0
+8R || 0
+On joue le coup : 13B
+1028ms
+... Nombre de positions calculées 3421405
+
+gainJ1 = 0
+gainJ2 = 0
+Fin de la partie---- Au tour du joueur IMPAIR
+Calcul en cours ...
+
+affichage des valeurs de chaque coups12R || 0
+14B || 0
+14R || 0
+2B || 0
+2R || 0
+4B || 0
+4R || 0
+6B || 0
+6R || 0
+8B || 0
+8R || 0
+On joue le coup : 13R
+922ms
+... Nombre de positions calculées 3175417
+
+gainJ1 = 0
+gainJ2 = 0
+Fin de la partie---- Au tour du joueur IMPAIR
+Calcul en cours ...
+
+affichage des valeurs de chaque coups14B || 0
+14R || 0
+2B || 0
+2R || 0
+4B || 0
+4R || 0
+6B || 0
+6R || 0
+8B || 0
+8R || 0
+On joue le coup : 15B
+979ms
+... Nombre de positions calculées 2794917
+
+gainJ1 = 0
+gainJ2 = 0
+Fin de la partie---- Au tour du joueur IMPAIR
+Calcul en cours ...
+
+affichage des valeurs de chaque coups14R || 0
+2B || 0
+2R || 0
+4B || 0
+4R || 0
+6B || 0
+6R || 0
+8B || 0
+8R || 0
+On joue le coup : 15R
+752ms
+... Nombre de positions calculées 2399981
+
+gainJ1 = 0
+gainJ2 = 0
+Fin de la partie---- Au tour du joueur IMPAIR
+Calcul en cours ...
+
+affichage des valeurs de chaque coups0R || 0
+2B || 0
+2R || 0
+4B || 0
+4R || 0
+6B || 0
+6R || 0
+8B || 0
+8R || 0
+On joue le coup : 1R
+658ms
+... Nombre de positions calculées 2177653
+
+gainJ1 = 0
+gainJ2 = 0
+Fin de la partie---- Au tour du joueur IMPAIR
+Calcul en cours ...
+
+affichage des valeurs de chaque coups2B || 0
+2R || 0
+4B || 0
+4R || 0
+6B || 0
+6R || 0
+8B || 0
+8R || 0
+On joue le coup : 3B
+528ms
+... Nombre de positions calculées 1799553
+
+gainJ1 = 0
+gainJ2 = 0
+Fin de la partie---- Au tour du joueur IMPAIR
+Calcul en cours ...
+
+affichage des valeurs de chaque coups2R || 0
+4B || 0
+4R || 0
+6B || 0
+6R || 0
+8B || 0
+8R || 0
+On joue le coup : 3R
+473ms
+... Nombre de positions calculées 1627604
+
+gainJ1 = 0
+gainJ2 = 0
+Fin de la partie---- Au tour du joueur IMPAIR
+Calcul en cours ...
+
+affichage des valeurs de chaque coups4B || 0
+4R || 0
+6B || 0
+6R || 0
+8B || 0
+8R || 0
+On joue le coup : 5B
+415ms
+... Nombre de positions calculées 1427578
+
+gainJ1 = 0
+gainJ2 = 0
+Fin de la partie---- Au tour du joueur IMPAIR
+Calcul en cours ...
+
+affichage des valeurs de chaque coups4R || 0
+6B || 0
+6R || 0
+8B || 0
+8R || 0
+On joue le coup : 5R
+346ms
+... Nombre de positions calculées 1198275
+
+gainJ1 = 0
+gainJ2 = 0
+Fin de la partie---- Au tour du joueur IMPAIR
+Calcul en cours ...
+
+affichage des valeurs de chaque coups6B || 0
+6R || 0
+8B || 0
+8R || 0
+On joue le coup : 7B
+305ms
+... Nombre de positions calculées 1048711
+
+gainJ1 = 0
+gainJ2 = 0
+Fin de la partie---- Au tour du joueur IMPAIR
+Calcul en cours ...
+
+affichage des valeurs de chaque coups6R || 0
+8B || 0
+8R || 0
+On joue le coup : 7R
+218ms
+... Nombre de positions calculées 754215
+
+gainJ1 = 0
+gainJ2 = 0
+Fin de la partie---- Au tour du joueur IMPAIR
+Calcul en cours ...
+
+affichage des valeurs de chaque coups8B || 0
+8R || 0
+On joue le coup : 9B
+152ms
+... Nombre de positions calculées 521671
+
+gainJ1 = 0
+gainJ2 = 0
+Fin de la partie---- Au tour du joueur IMPAIR
+Calcul en cours ...
+
+affichage des valeurs de chaque coups8R || 0
+On joue le coup : 9R
+46ms
+... Nombre de positions calculées 157634
+
+gainJ1 = 0
+gainJ2 = 0
+Fin de la partie---- Au tour du joueur IMPAIR
+Calcul en cours ...
+
+affichage des valeurs de chaque coups10R || 0
+On joue le coup : 11R
+56ms
+... Nombre de positions calculées 193521
+
+gainJ1 = 0
+gainJ2 = 0
+Fin de la partie---- Au tour du joueur IMPAIR

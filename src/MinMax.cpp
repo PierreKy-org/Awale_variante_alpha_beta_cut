@@ -25,9 +25,9 @@ int evaluation(Board board){
 int evaluation2(Board board){
     //cout << "evaluated at : " << (board.gainJ1 - board.gainJ2) <<"\n\n";
     if(player == 0){
-        return board.gainJ1 - board.gainJ2;
+        return board.graineRougeJoueur(player) - board.graineRougeJoueur((player+1)%2);
     } else {
-        return board.gainJ2 - board.gainJ1;
+        return board.graineRougeJoueur(player) - board.graineRougeJoueur((player+1)%2);
     }
 }
 std::vector<Board> allBoards(Board board, int joueur){
@@ -127,14 +127,16 @@ Move playAMove(Board initialBoard, int joueur, int maxDepth){
     if (joueur == 0){
         int max = -INFINITY;
         string maxStr;
-        printf("\naffichage des valeurs de chaque coups");
+        
+        //printf("\naffichage des valeurs de chaque coups");
         for(const auto& elem : values) {
-            std::cout << elem.first << " || " << elem.second << "\n";
+            //std::cout << elem.first << " || " << elem.second << "\n";
             if (elem.second > max) {
                 max = elem.second;
                 maxStr = elem.first;
             }
         }
+        
         Move res = parse_a_move(maxStr);
         res.starting_hole++;
         return res;
@@ -142,9 +144,9 @@ Move playAMove(Board initialBoard, int joueur, int maxDepth){
     } else {
         int min = INFINITY;
         string minStr;
-        printf("\naffichage des valeurs de chaque coups");
+        //printf("\naffichage des valeurs de chaque coups");
         for(const auto& elem : values) {
-            std::cout << elem.first << " || " << elem.second << "\n";
+           // std::cout << elem.first << " || " << elem.second << "\n";
             if (elem.second < min) {
                 min = elem.second;
                 minStr = elem.first;

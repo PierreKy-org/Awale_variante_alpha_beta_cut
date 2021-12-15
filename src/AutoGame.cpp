@@ -101,6 +101,7 @@ int main(){
                 illegal_flag = true;
             }
         }
+    printf("\ngainJ1 = %d\ngainJ2 = %d\n", board.gainJ1, board.gainJ2);
     printf("Fin de la partie");
     }
 }
