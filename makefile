@@ -45,7 +45,7 @@ build :
 	@g++ -O3 src/Game.cpp -o builds/main
 
 buildAuto :
-	@g++  src/AutoGame.cpp -o builds/auto
+	@g++  -O3 -Ofast src/AutoGame.cpp -o builds/auto
 
 buildMinmax:
 	@g++ -O3 src/Minmax.cpp -o builds/minmax
@@ -62,8 +62,5 @@ buildCapturingTest :
 buildMinmaxTest : 
 	@g++ tests/MinmaxTest.cpp -o builds/tests/minmax
 
-
 buildCopy : 
 	@g++ tests/CopyBoardTest.cpp -o builds/tests/copy
-
-#TODO : Definir un build optimisé
